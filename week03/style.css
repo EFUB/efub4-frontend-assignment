@@ -1,0 +1,80 @@
+div {
+    margin-bottom: 20px;
+}
+
+.thisisme {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+.profile_img{
+    border-radius: 30%;
+}
+
+.age {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hobby{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.mylogs{
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+    margin-bottom: 2%;
+
+}
+
+.git_blog_instagram{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+  }
+
+#namebutton{
+    border-radius: 20%;
+    padding: 50px;
+}
+
+#big{
+    font-size: 24px;
+    
+}
+
+#hobby_q{
+    font-size: 24px;
+    margin-bottom: 0.5%;
+     
+}
+
+#hobby_a{
+    margin: 0;  
+    text-align : center;
+}
+
+
+#myname{
+    font-size: 20px;
+    margin: 0; 
+}
+
+#padding{
+    padding-bottom: 5%;
+}
+
+#backgroundcolor{
+    background-color: darkgrey;
+    margin-bottom: 0%;
+    color: aliceblue;
+}
