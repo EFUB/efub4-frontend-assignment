@@ -1,0 +1,39 @@
+body {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "a b b"
+    "a c d"
+    "footer footer footer";
+}
+
+header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerBtn {
+  display: flex;
+  flex-direction: row;
+}
+
+.a {
+  grid-area: a;
+}
+
+.b {
+  grid-area: b;
+}
+
+.c {
+  grid-area: c;
+}
+
+.d {
+  grid-area: d;
+}
+
+footer {
+  grid-area: footer;
+}
