@@ -12,6 +12,7 @@ div {
   .flip-container {
   perspective: 1000px;
   margin: auto;
+  cursor: pointer;
 }
 
 .flipper {
