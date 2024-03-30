@@ -1,0 +1,138 @@
+/**********************************/
+/*Header*/
+/*********************************/
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #d0ebff;
+  height: 9.6rem;
+  padding: 0 4.8rem;
+}
+
+.main-nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+
+.main-nav-link:link,
+.main-nav-link:visited {
+  display: inline-block;
+}
+.main-nav-pic {
+  max-width: 4rem;
+}
+
+/********************************/
+/*intro section*/
+/********************************/
+.intro-section {
+  background-color: #d0ebff;
+  padding: 4.8rem 0 9.6rem 0;
+}
+
+.intro {
+  max-width: 130rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 9.6rem;
+  column-gap: 1rem;
+  padding: 0 3.2rem;
+}
+
+.intro-img {
+  margin-left: 12rem;
+  width: 50%;
+}
+
+.intro-job {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.05;
+  color: #333;
+  letter-spacing: -0.5px;
+  margin-bottom: 2rem;
+}
+
+.intro-description {
+  font-size: 2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/*****************************/
+/*More about me section*/
+/*****************************/
+
+.section-more {
+  padding: 9.6rem 0;
+  background-color: #f1f3f5;
+}
+
+.section-more div div {
+  padding: 10px;
+  font-size: 50px;
+  background-color: #f1f3f5;
+}
+
+.step-img {
+  width: 70%;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+}
+
+.step-number {
+  font-size: 8.6rem;
+  font-weight: 600;
+  color: rgb(194, 193, 193);
+  margin-bottom: 1.2rem;
+}
+
+.step-description {
+  font-size: 2rem;
+  line-height: 1.8;
+}
+
+.step-img-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.small-title {
+  font-size: 2.5rem;
+  line-height: 1.4;
+  list-style: none;
+  color: #1c7ed6;
+}
+
+.skill {
+  font-size: 2.5rem;
+  line-height: 2;
+  list-style: none;
+  color: #555;
+}
+.small-content {
+  margin-left: 1.5rem;
+  font-size: 2rem;
+  line-height: 1.4;
+  margin-bottom: 4rem;
+  color: #555;
+}
+
+/*****************************/
+/*Contact section*/
+/*****************************/
+
+#section-contact {
+  padding-top: 4.8rem;
+  padding-bottom: 10rem;
+  background-color: #d0ebff;
+}
+.contact-content {
+  font-size: 2.5rem;
+  line-height: 2;
+}
