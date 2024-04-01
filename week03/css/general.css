@@ -1,0 +1,128 @@
+/*
+
+- Font sizes
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+
+- Spacing sizes
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+*/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+}
+
+/*********************************/
+/*General reusable components*/
+/*********************************/
+/* primary, secondary 공통 */
+.heading-primary,
+.heading-secondary {
+  color: #333;
+  letter-spacing: -0.5px;
+  font-weight: 700;
+}
+
+.heading-primary {
+  font-size: 7rem;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+}
+
+.heading-secondary {
+  font-size: 4.4rem;
+  line-height: 1.2;
+  margin-bottom: 9.6rem;
+}
+
+.heading-contact {
+  font-size: 4.4rem;
+  line-height: 1.2;
+  margin-bottom: 3rem;
+}
+.heading-tertiary {
+  font-size: 3.6rem;
+  line-height: 1.2;
+  margin-bottom: 3.2rem;
+}
+
+.btn-box {
+  margin-top: 5rem;
+  display: inline-block;
+}
+
+.btn:link,
+.btn:visited {
+  background-color: #228be6;
+  color: white;
+  font-size: 2rem;
+  padding: 3.2rem 3.2rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background-color 1s;
+  box-shadow: 3px 3px 3px rgb(4, 46, 132);
+  transition-duration: 0.5s;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: #1864ab;
+}
+
+.btn:active {
+  margin-left: 5px;
+  margin-top: 5px;
+  box-shadow: none;
+}
+.margin-right-sm {
+  margin-right: 1.6rem !important;
+}
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}
+
+.grid {
+  display: grid;
+  row-gap: 9.6rem;
+  column-gap: 6.2rem;
+}
+
+.grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3-cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--center-v {
+  align-items: center;
+}
+
+.content-grid-container {
+  display: grid;
+  row-gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+.content-box {
+  font-size: 2rem;
+}
