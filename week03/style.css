@@ -1,0 +1,119 @@
+div {
+    margin-bottom: 20px;
+}
+
+.thisisme {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .flip-container {
+  perspective: 1000px;
+  margin: auto;
+  cursor: pointer;
+}
+
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+  transform-origin: 50% 50%;
+  width: 220px; 
+  height: 220px;
+}
+
+.front, .back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
+.front {
+    transform: rotateY(0deg);
+}
+
+.back {
+    transform: rotateY(180deg);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+}
+
+.flip-container:hover .flipper {
+    transform: rotateY(180deg);
+}
+
+.profile_img{
+    border-radius: 30%;
+}
+
+.age {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hobby{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.mylogs{
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+    margin-bottom: 2%;
+
+}
+
+.git_blog_instagram{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+  }
+
+
+
+
+#big{
+    font-size: 24px;
+    
+}
+
+#hobby_q{
+    font-size: 24px;
+    margin-bottom: 0.5%;
+     
+}
+
+#hobby_a{
+    margin: 0;  
+    text-align : center;
+}
+
+
+#myname{
+    font-size: 20px;
+    margin: 0; 
+}
+
+#padding{
+    padding-bottom: 5%;
+}
+
+#backgroundcolor{
+    background-color: darkgrey;
+    margin-bottom: 0%;
+    color: aliceblue;
+}
