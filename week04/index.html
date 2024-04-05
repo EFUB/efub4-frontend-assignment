@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가위바위보 게임</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="back">
+      <div class="main">
+        <div class="top">
+          <div class="side" id="computer">
+            <h4><br />Computer</h4>
+          </div>
+          <div id="comp-icon">
+            <img id="comp-img" src="images/comp-img.png" />
+          </div>
+          <div class="side" id="user">
+            <h4>You</h4>
+          </div>
+          <div id="msg">
+            <div id="text">
+              ㅤ앗! 야생 컴퓨터(이)가 등장했다! 무엇을 할까?<br />
+              <!--여기 전적이 업데이트 되어야함-->
+              <span id="myScore">
+                ㅤ전적: <span id="win">0</span>승 / <span id="draw">0</span>무 /
+                <span id="lose">0</span>패
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          <div class="choice">
+            <button id="scissors">가위를 낸다.</button>
+            <button id="rock">바위를 낸다.</button>
+            <button id="paper">보를 낸다.</button>
+            <button id="reset">점수를 리셋한다.</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>
