@@ -1,0 +1,156 @@
+.bagel-fat one-regular {
+  font-family: "Bagel Fat One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  box-sizing: inherit;
+  font-family: "Bagel Fat One";
+}
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+body {
+  /*
+* Created with https://www.css-gradient.com
+* Gradient link: https://www.css-gradient.com/?c1=f4d274&c2=eda67b&gt=l&gd=dtl
+*/
+  background-color: #fbab7e;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+
+  font-weight: 400;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main {
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
+
+  border-radius: 9px;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+  border-radius: 9px;
+  width: 110rem;
+  height: 60rem;
+  justify-content: center;
+  align-items: center;
+}
+.player {
+  display: flex;
+  padding: 9rem;
+  flex: 50%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.player--0 {
+  background-color: #ffd8a8;
+}
+.player--1 {
+  background-color: #fff3bf;
+}
+
+/* 요소들 */
+.name {
+  font-size: 4rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.score-box {
+  padding: 1rem;
+  width: 10rem;
+  height: 6rem;
+  background-color: #fcc419;
+  text-align: center;
+  border-radius: 1rem;
+  box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
+}
+.score {
+  font-size: 3.5rem;
+}
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px 1px black;
+  height: 10rem;
+  width: 10rem;
+}
+
+.btn--reset {
+  font-size: 4rem;
+  font-weight: 300;
+  position: absolute;
+  top: 3rem;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 0.7rem 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
+  width: fit-content;
+}
+
+.displayResult {
+  font-size: 4rem;
+  font-weight: 300;
+  position: absolute;
+  top: 20rem;
+  margin: 0 auto;
+  letter-spacing: 0.5rem;
+}
+
+/* choice box */
+.choice-section {
+  height: 30rem;
+  width: 35rem;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: -5rem;
+}
+
+.choice-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 5rem;
+}
+
+.choice-img {
+  width: 60%;
+  height: 75%;
+  float: left;
+}
+
+#rock {
+  height: 60%;
+}
+
+.hidden {
+  display: none;
+}
+
+.player-choice-box {
+  width: 40rem;
+  height: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-choice {
+  width: 15rem;
+}

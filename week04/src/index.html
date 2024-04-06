@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock paper scissor game</title>
+    <link rel="stylesheet" href="/week04/src/style.css" />
+    <link rel="stylesheet" type="text/css" href="_static/src/browser/pages/fonts.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <main>
+      <section class="player player--0">
+        <h2 class="name" id="name--0">나</h2>
+        <div class="player-choice-box">
+           <img class="player-choice" id="choice--0" src="/week04/img/rock.png"></i>
+        </div>
+        <div class="score-box">
+          <p class="score" id="score--0">0</p>
+        </div>
+      </section>
+      <section class="player player--1">
+        <h2 class="name" id="name--1">컴퓨터</h2>
+        <div class="player-choice-box">
+          <img class="player-choice" id = 'choice--1'src="/week04/img/rock.png"></i>
+        </div>
+        
+        <div class="score-box">
+          <p class="score" id="score--1">0</p>
+        </div>
+      </section>
+      <section class="choice-section">
+        <div class="choice-box">
+          <btn onclick = "playGame('rock')" class="btn"
+            ><img class="choice-img" id="rock" src="/week04/img/rock.png"
+          /></btn>
+          <btn onclick = "playGame('paper')"  class="btn"
+            ><img class="choice-img" src="/week04/img/paper.png"
+          /></btn>
+          <btn onclick = "playGame('scissors')"  class="btn"
+            ><img class="choice-img" src="/week04/img/scissors.png"
+          /></btn>
+        </div>
+      </section>
+
+      <btn onclick = 'init()' class="btn btn--reset">새 게임</btn>
+      <p class="displayResult"></p>
+    </main>
+    <script src="/week04/src/script.js"></script>
+  </body>
+</html>
