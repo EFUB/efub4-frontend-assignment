@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>가위바위보</title>
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="score-box">
+				<p class="score" id="result-player">0</p>
+				<p class="score vs">:</p>
+				<p class="score" id="result-computer">0</p>
+			</div>
+			<p id="result-text" class="result-text">
+				시작하려면 가위, 바위, 보 중 하나를 선택하세요.
+			</p>
+			<div class="result-box">
+				<div class="human-box">
+					<p>인간</p>
+					<div id="player-selected-img"></div>
+				</div>
+				<div class="computer-box">
+					<p>컴퓨터</p>
+					<div id="computer-selected-img"></div>
+				</div>
+			</div>
+			<div id="select-box" class="select-box">
+				<span id="scissors" class="scissors">가위</span>
+				<span id="rock" class="rock">바위</span>
+				<span id="paper" class="paper">보</span>
+			</div>
+			<div id="reset">초기화</div>
+		</div>
+		<script src="./index.js"></script>
+	</body>
+</html>
