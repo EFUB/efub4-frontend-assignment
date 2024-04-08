@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap" rel="stylesheet">
+    <title>가위바위보 게임</title>
+</head>
+<body>
+    <img id="title" src="src/titleLogo.png" />
+    <div class="all">
+        <div class="main">
+            <div class="player">
+                <div id="playerType">Me</div>
+                <div class="score">
+                    <div id="myScore">0</div>
+                </div>
+                <div class="playerCard">
+                    <img id="playerImage" src="src/humanPaper.png">
+                </div>
+            </div>
+            <div id="result">vs</div>
+            <div class="computer">
+                <div id="playerType">Computer</div>
+                <div class="score">
+                    <div id="computerScore">0</div>
+                </div>
+                <div class="computerCard">
+                    <img id="computerImage" src="src/computerRock.png">
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="rock">Rock</button>
+            <button id="paper">Paper</button>
+            <button id="scissors">Scissors</button>
+        </div>
+        <div class="reset">
+            <button id="reset">reset</button>
+        </div>
+    </div>  
+    <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
