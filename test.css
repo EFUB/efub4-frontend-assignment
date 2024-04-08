@@ -1,0 +1,87 @@
+body{
+  background-color:pink;
+
+}
+div{
+    display:flex;
+    justify-content:center;
+}
+h3{
+    display:flex;
+    justify-content:center;
+    margin-left:50px;
+    margin-right:50px;
+    margin-top:30px;
+    font-size:20px;
+}
+p{
+    display:flex;
+    justify-content:center;
+}
+.score{
+    border-style:solid;
+    border-width:2px;
+    padding-left:30px;
+    padding-right:30px;
+    padding-bottom:10px;
+    padding-top:10px;
+    font-size:30px;
+}
+.result{
+  font-size:20px;
+}
+.block{
+  justify-content:center;
+}
+.yourChoice{
+  font-size:100px;
+  margin-top:0px;
+  margin-right:10px;
+}
+.computerChoice{
+  font-size:100px;
+  margin-top:0px;
+  margin-left:10px;
+}
+button {
+  width: 100px;
+  height: 70px;
+  border-radius: 15px;
+  border: none;
+  color: white;
+  font-size: 1.7em;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.buttons {
+  display: flex;
+  column-gap: 15px;
+}
+
+.rock{
+  background-color: #e74c3c;
+}
+
+.rock:hover {
+  background-color: #c0392b;
+}
+
+.paper {
+  background-color: #3498db;
+}
+
+.paper:hover {
+  background-color: #2980b9;
+}
+
+.scissor {
+  background-color: #1abc9c;
+}
+
+.scissor:hover {
+  background-color: #16a085;
+}
+.reset{
+  background-color:black;
+  margin:10px;
+}
