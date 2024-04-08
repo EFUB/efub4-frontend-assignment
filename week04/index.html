@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>가위바위보</title>
+  </head>
+  <body>
+    <main>
+      <div id="title">가위바위보</div>
+      <div id="score">0 : 0</div>
+      <div id="result">도전을 누르고 3초 안에 선택하자!</div>
+      <button id="reset" onclick="resetAll()">초기화</button>
+      <section id="display">
+        <section id="human">
+          <div>나</div>
+          <div id="Hchoice">👍</div>
+        </section>
+        <section id="com">
+          <div>컴퓨터</div>
+          <div id="Cchoice">👎</div>
+        </section>
+      </section>
+      <button id="start" onclick="clickStart()">도전!</button>
+      <section id="btns">
+        <button id="scissor" disabled onclick="setMyChoice(0)">가위</button>
+        <button id="rock" disabled onclick="setMyChoice(1)">바위</button>
+        <button id="paper" disabled onclick="setMyChoice(2)">보</button>
+      </section>
+    </main>
+    <script src="code.js"></script>
+  </body>
+</html>
