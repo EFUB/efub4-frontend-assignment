@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    
+    <title>가위바위보</title>
+</head>
+<body>
+    <div class="top_end"></div>
+    <div class="background">
+        <div class="top">
+            <div class="score">
+                <div id="humanscore">0</div>
+                <div id="vs"> : </div>
+                <div id="computerscore">0</div>
+            </div>
+            <div class="text">버튼을 눌러 시작하세요!</div>
+        </div>
+        
+        <div class="middle">
+            <div id="human_select"><img id="img" src="./img/paper.png"/></div>
+            <div id="robot_select"><img id="robotimg" src="./img/paper.png"/></div>
+        </div>
+        <div class="bottom">
+            <button onclick="scissor_button()" id="img_toScissor">가위</button>
+            <button onclick="rock_button()" id="img_toRrock">바위</button>
+            <button onclick="paper_button()" id="img_toPaper">보</button>
+        </div> 
+        <button id="reset">초기화</button>
+    </div>
+
+    <script>
+        let humanScore  = document.getElementById("humanscore");
+        let computerScore = document.getElementById("computerscore");
+        const resetbutton = document.getElementById("reset");
+        const text = document.getElementsByClassName("text");
+        let human = 0;
+        let computer = 0;
+        resetbutton.onclick = ()=>{
+            computerScore.innerText = "0";
+            humanScore.innerText = "0";
+            //승리 출력
+            const text = document.getElementsByClassName("text");
+                for (let i = 0; i < text.length; i++) {
+                    text[i].innerText = "버튼을 눌러 시작하세요!";
+                }
+        };
+
+        function rock_button() {
+            
+            document.getElementById("img").src = "./img/rock.png";
+            const human = 2;
+            const computer = Math.floor(Math.random() * 3) + 1;
+            console.log(computer);
+            /*컴퓨터와 비교 후 점수 올리고 내리고*/
+            if(computer === human){
+                document.getElementById("robotimg").src = "./img/rock.png";
+                //비겼을 때
+                const text = document.getElementsByClassName("text");
+                for (let i = 0; i < text.length; i++) {
+                    text[i].innerText = "비김";
+                }
+            }
+            else if(human > computer){
+                const humanScore = parseInt(humanscore.innerText);
+                humanscore.innerText = humanScore+1;
+                console.log("승리");
+                //승리 출력
+                const text = document.getElementsByClassName("text");
+                for (let i = 0; i < text.length; i++) {
+                    text[i].innerText = "승";
+                }
+                document.getElementById("robotimg").src = "./img/scissor.png";
+            }
+            else if(human < computer){
+                //패배 출력
+                const text = document.getElementsByClassName("text");
+                for (let i = 0; i < text.length; i++) {
+                    text[i].innerText = "패";
+                }
+                const computerScore = parseInt(computerscore.innerText);
+                computerscore.innerText = computerScore+1;
+                document.getElementById("robotimg").src = "./img/paper.png";
+            }
+        };
+
+        function scissor_button() {
+            document.getElementById("img").src = "./img/scissor.png";
+            human = 2;
+            const computer = Math.floor(Math.random() * 3) + 1;
+            console.log(computer);
+            /*컴퓨터와 비교 후 점수 올리고 내리고*/
+            if(computer === human){
+                document.getElementById("robotimg").src = "./img/scissor.png";
+                //비겼을 때
+                const text = document.getElementsByClassName("text");
+                for (let i = 0; i < text.length; i++) {
+                    text[i].innerText = "비김";
+                }
+            }
+            else if(human > computer){
+                const humanScore = parseInt(humanscore.innerText);
+                humanscore.innerText = humanScore+1;
+                console.log("승리");
+                //승리 출력
+                const text = document.getElementsByClassName("text");
+                for (let i = 0; i < text.length; i++) {
+                    text[i].innerText = "승";
+                }
+                document.getElementById("robotimg").src = "./img/paper.png";
+            }
+            else if(human < computer){
+                //패배 출력
+                const text = document.getElementsByClassName("text");
+                for (let i = 0; i < text.length; i++) {
+                    text[i].innerText = "패";
+                }
+                const computerScore = parseInt(computerscore.innerText);
+                computerscore.innerText = computerScore+1;
+                document.getElementById("robotimg").src = "./img/rock.png";
+            }
+        };
+
+        function paper_button() {
+            document.getElementById("img").src = "./img/paper.png";
+            human = 2;
+            const computer = Math.floor(Math.random() * 3) + 1;
+            console.log(computer);
+            /*컴퓨터와 비교 후 점수 올리고 내리고*/
+            if(computer === human){
+                document.getElementById("robotimg").src = "./img/paper.png";
+                //비겼을 때
+                const text = document.getElementsByClassName("text");
+                for (let i = 0; i < text.length; i++) {
+                    text[i].innerText = "비김";
+                }
+            }
+            else if(human > computer){
+                const humanScore = parseInt(humanscore.innerText);
+                humanscore.innerText = humanScore+1;
+                console.log("승리");
+                //승리 출력
+                const text = document.getElementsByClassName("text");
+                for (let i = 0; i < text.length; i++) {
+                    text[i].innerText = "승";
+                }
+                document.getElementById("robotimg").src = "./img/rock.png";
+            }
+            else if(human < computer){
+                //패배 출력
+                const text = document.getElementsByClassName("text");
+                for (let i = 0; i < text.length; i++) {
+                    text[i].innerText = "패";
+                }
+                const computerScore = parseInt(computerscore.innerText);
+                computerscore.innerText = computerScore+1;
+                document.getElementById("robotimg").src = "./img/scissor.png";
+            }
+        };
+        
+    </script>
+</body>
+</html>
