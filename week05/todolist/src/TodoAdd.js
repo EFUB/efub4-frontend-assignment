@@ -5,6 +5,7 @@ function TodoAdd({ todoList, setTodoList }) {
             id: Date.now(),
             text: event.target["todo-text"].value,
             done: false,
+            date: null,
         };
         setTodoList([...todoList, newTodoItem]);
         event.target.reset();

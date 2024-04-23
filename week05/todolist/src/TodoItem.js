@@ -1,5 +1,4 @@
 import { useState } from "react";
-import CompletedList from "./CompletedList";
 
 function TodoItem({
     todoThis,
@@ -24,7 +23,13 @@ function TodoItem({
     }
 
     function completeTodo() {
-        const updatedTodo = { ...todoThis, done: !todoThis.done };
+        const date = new Date();
+        const formattedDate = `${date.getMonth() + 1}.${date.getDate()}`;
+        const updatedTodo = {
+            ...todoThis,
+            done: !todoThis.done,
+            date: formattedDate,
+        };
         if (todoThis.done) {
             setTodoList([...todoList, updatedTodo]);
             deleteCompleted(todoThis);
@@ -83,6 +88,7 @@ function TodoItem({
             {!todoThis.done && (
                 <input type="button" value="X" onClick={deleteTodo} />
             )}
+            {todoThis.done && <span>{todoThis.date}</span>}
         </li>
     );
 }
