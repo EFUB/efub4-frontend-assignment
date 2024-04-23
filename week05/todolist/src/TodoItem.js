@@ -1,10 +1,22 @@
 import { useState } from "react";
+import CompletedList from "./CompletedList";
 
-function TodoItem({ todoThis, todoList, setTodoList }) {
+function TodoItem({
+    todoThis,
+    todoList,
+    setTodoList,
+    completedList,
+    setCompletedList,
+}) {
     const [isEditing, setIsEditing] = useState(false);
 
     function deleteTodo() {
         setTodoList(todoList.filter((todoItem) => todoItem.id !== todoThis.id));
+    }
+    function deleteCompleted() {
+        setCompletedList(
+            completedList.filter((todoItem) => todoItem.id !== todoThis.id)
+        );
     }
 
     function enterEditMode() {
@@ -12,14 +24,16 @@ function TodoItem({ todoThis, todoList, setTodoList }) {
     }
 
     function completeTodo() {
-        setTodoList(
-            todoList.map((todoItem) => {
-                return todoItem.id === todoThis.id
-                    ? { ...todoThis, done: !todoThis.done }
-                    : todoItem;
-            })
-        );
+        const updatedTodo = { ...todoThis, done: !todoThis.done };
+        if (todoThis.done) {
+            setTodoList([...todoList, updatedTodo]);
+            deleteCompleted(todoThis);
+        } else {
+            setCompletedList([...completedList, updatedTodo]);
+            deleteTodo(todoThis);
+        }
     }
+
     return (
         <li className="todo-item">
             <input
@@ -45,6 +59,7 @@ function TodoItem({ todoThis, todoList, setTodoList }) {
                             )
                         }
                     />
+
                     <input
                         type="button"
                         value="✅"
@@ -56,10 +71,18 @@ function TodoItem({ todoThis, todoList, setTodoList }) {
             ) : (
                 <span>
                     <span>{todoThis.text}</span>
-                    <input type="button" value="✏" onClick={enterEditMode} />
+                    {!todoThis.done && (
+                        <input
+                            type="button"
+                            value="✏"
+                            onClick={enterEditMode}
+                        />
+                    )}
                 </span>
             )}
-            <input type="button" value="X" onClick={deleteTodo} />
+            {!todoThis.done && (
+                <input type="button" value="X" onClick={deleteTodo} />
+            )}
         </li>
     );
 }

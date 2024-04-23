@@ -1,9 +1,14 @@
 import TodoItem from "./TodoItem";
 
-function TodoList({ todoList, setTodoList, completedList, setCompletedList }) {
+function CompletedList({
+    todoList,
+    setTodoList,
+    completedList,
+    setCompletedList,
+}) {
     return (
-        <ul className="todo-list">
-            {todoList.map((todoItem) => {
+        <ul className="completed-list">
+            {completedList.map((todoItem) => {
                 return (
                     <TodoItem
                         todoThis={todoItem}
@@ -18,4 +23,4 @@ function TodoList({ todoList, setTodoList, completedList, setCompletedList }) {
     );
 }
 
-export default TodoList;
+export default CompletedList;
