@@ -29,20 +29,23 @@ function App() {
 
     return (
         <div className="App">
-            <Header />
-            <TodoList
-                todoList={todoList}
-                setTodoList={setTodoList}
-                completedList={completedList}
-                setCompletedList={setCompletedList}
-            />
-            <TodoAdd todoList={todoList} setTodoList={setTodoList} />
-            <CompletedList
-                todoList={todoList}
-                setTodoList={setTodoList}
-                completedList={completedList}
-                setCompletedList={setCompletedList}
-            />
+            <div className="container">
+                <Header />
+                <div className="line1"></div>
+                <TodoList
+                    todoList={todoList}
+                    setTodoList={setTodoList}
+                    completedList={completedList}
+                    setCompletedList={setCompletedList}
+                />
+                <TodoAdd todoList={todoList} setTodoList={setTodoList} />
+                <CompletedList
+                    todoList={todoList}
+                    setTodoList={setTodoList}
+                    completedList={completedList}
+                    setCompletedList={setCompletedList}
+                />
+            </div>
         </div>
     );
 }

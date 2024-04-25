@@ -13,12 +13,13 @@ function TodoAdd({ todoList, setTodoList }) {
     return (
         <form className="todo-add" onSubmit={addTodo}>
             <input
+                className="todo-write"
                 type="text"
                 name="todo-text"
                 required
-                placeholder="오늘의 할 일"
+                placeholder=" 오늘의 할 일"
             ></input>
-            <input type="submit" value="+"></input>
+            <input className="todo-submit" type="submit" value=""></input>
         </form>
     );
 }

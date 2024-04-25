@@ -42,13 +42,15 @@ function TodoItem({
     return (
         <li className="todo-item">
             <input
+                className="check_box"
                 type="checkbox"
                 checked={todoThis.done}
                 onClick={completeTodo}
             />
             {isEditing ? (
-                <span>
+                <div className="con2">
                     <input
+                        className="editing"
                         type="text"
                         defaultValue={todoThis.text}
                         onChange={(event) =>
@@ -66,29 +68,29 @@ function TodoItem({
                     />
 
                     <input
+                        className="edit_done"
                         type="button"
-                        value="✅"
                         onClick={() => {
                             setIsEditing(false);
                         }}
                     />
-                </span>
+                </div>
             ) : (
-                <span>
-                    <span>{todoThis.text}</span>
+                <div className="con1">
+                    <div className="todo_text">{todoThis.text}</div>
                     {!todoThis.done && (
                         <input
+                            className="edit"
                             type="button"
-                            value="✏"
                             onClick={enterEditMode}
                         />
                     )}
-                </span>
+                </div>
             )}
             {!todoThis.done && (
-                <input type="button" value="X" onClick={deleteTodo} />
+                <input className="delete" type="button" onClick={deleteTodo} />
             )}
-            {todoThis.done && <span>{todoThis.date}</span>}
+            {todoThis.done && <div className="date">{todoThis.date}</div>}
         </li>
     );
 }
