@@ -31,7 +31,7 @@ body {
   border-radius: 8px;
   border: none;
   background-color: #eff2e4;
-  margin-bottom: 2vh;
+  margin-bottom: 3vh;
 }
 
 .todo-add input[type="submit"] {
