@@ -36,7 +36,7 @@
   font-size: 1.5em;
 }
 
-.del-btn {
+.del-btn, .edit-btn {
   font-family: 'GyeonggiBatang';
   padding: 5px 10px 5px 10px;
   margin: 10px;
