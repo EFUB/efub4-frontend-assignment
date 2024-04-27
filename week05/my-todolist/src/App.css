@@ -1,0 +1,84 @@
+@font-face {
+  font-family: 'TTHakgyoansimYeohaengR';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_keris@1.0/TTHakgyoansimYeohaengR.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'WavvePADO-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/WavvePADO-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GyeonggiBatang';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.App {
+  text-align: center;
+}
+
+.header {
+  font-family: 'TTHakgyoansimYeohaengR';
+  font-size: 3em;
+  padding: 80px 0px 50px 0px;
+  background-color:#943434;
+  color: white;
+}
+
+.todo-list {
+  font-family: 'WavvePADO-Regular';
+  font-size: 1.5em;
+}
+
+.del-btn {
+  font-family: 'GyeonggiBatang';
+  padding: 5px 10px 5px 10px;
+  margin: 10px;
+}
+
+.plus-btn {
+  font-family: 'TTHakgyoansimYeohaengR';
+  font-size: 2.5em;
+}
+
+.check-btn {
+  width: 1.3em;
+  height: 1.3em;
+}
+
+.todo-item input[type=checkbox]:checked ~ span.done-text {
+  text-decoration: line-through;
+  color: grey;
+  font-style:normal
+}
+
+.todo-item input[type=checkbox]:checked ~ span {
+  text-decoration: none;
+  color: red;
+  font-style: italic;
+}
+
+.todo-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.input {
+  font-family: 'GyeonggiBatang';
+  width: 380px;
+  height: 40px;
+  margin: 10px;
+  padding-left: 15px;
+}
+
+.todo-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
