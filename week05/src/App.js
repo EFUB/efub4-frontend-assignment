@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Header from "./Header";
 import TodoList from "./TodoList";
-import TodoAdd from "./TodoAdd";
-import "./App.css";
+import TodoAdd from "./TodoAdd"
+import './App.css';
 
 const TODO_LIST_KEY = "todoList";
 
