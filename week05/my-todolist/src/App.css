@@ -1,0 +1,93 @@
+@font-face {
+  font-family: "Her-Gilwonok";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_ten@1.0/Her-Gilwonok.woff")
+    format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Her-Leeoksun";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_ten@1.0/Her-Leeoksun.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Her-Leeoksun", "Her-Gilwonok", sans-serif;
+  background-image: url("back.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.App {
+  width: 512px;
+  height: 768px;
+
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+  margin: 0 auto;
+
+  margin-top: 96px;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  text-align: center;
+}
+
+.todo-item {
+  flex: 1;
+  font-size: 20px;
+  color: #495057;
+  list-style: none;
+  margin: 20px 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.editBtn {
+  float: right;
+  margin-left: 5px;
+}
+
+.deleteBtn {
+  float: right;
+}
+
+.todo-item input[type="checkbox"]:checked ~ span {
+  text-decoration: line-through;
+}
+
+.checkbox {
+  /* 체크박스 크기 조절 */
+  width: 30px; /* 원하는 크기로 조절 */
+  height: 20px; /* 원하는 크기로 조절 */
+  margin-right: 10px; /* 체크박스와 텍스트 간격 조절 */
+}
+
+.todo-list {
+  flex: 1;
+  padding: 20px 32px;
+  padding-bottom: 48px;
+  overflow-y: auto;
+}
+
+.todo-add {
+  display: flex;
+  font-size: 1.8rem;
+  margin: 0 20px;
+}
+#todo-text {
+  flex: 14;
+  margin-right: 10px;
+}
+#submitBtn {
+  flex: 1;
+  font-size: 1.5rem;
+}
