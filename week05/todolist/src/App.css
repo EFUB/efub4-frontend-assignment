@@ -1,0 +1,201 @@
+@font-face {
+    font-family: "GangwonEdu_OTFLightA";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFLightA.woff")
+        format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "GangwonEdu_OTFBoldA";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff")
+        format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.App {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 700px;
+    height: 100%;
+    background-color: rgb(246, 250, 255);
+    font-family: "GangwonEdu_OTFLightA";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px 30px 0;
+    margin-top: 30px;
+}
+
+.line1 {
+    border-top: 1px solid #90e0ef;
+    margin: 10px auto;
+    width: 500px;
+}
+
+.header {
+    font-family: "GangwonEdu_OTFBoldA";
+    font-size: 4em;
+    background-image: "image/checkmark.png";
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.todo-list {
+    padding: 0;
+}
+
+.completed-list {
+    padding-left: 0;
+}
+
+.completed-list .todo-item {
+    background-color: #90e1f0;
+    border: 1px solid #caf0f8;
+
+    box-shadow: 5px 5px 5px #cbf6ff;
+}
+
+.todo-write {
+    appearance: none;
+    width: 300px;
+    height: 33px;
+    border-color: #e2faff;
+    border-radius: 30px;
+    font-family: "GangwonEdu_OTFLightA";
+    font-size: 1.5rem;
+    margin-right: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.todo-add {
+    display: flex;
+    align-items: center;
+    margin: 10px auto;
+}
+
+.todo-write:focus {
+    outline: none;
+}
+
+.todo-submit {
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    background-color: transparent;
+    background-image: url("image/add.png"); /* 배경 이미지 설정 */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.todo-item {
+    font-size: 1.7em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 450px;
+    padding: 10px;
+    margin: 10px 0;
+
+    background-color: #e2faff;
+    border: 1px solid #caf0f8;
+    border-radius: 30px;
+
+    box-shadow: 5px 5px 5px #90e0ef;
+}
+
+.con1 {
+    display: flex;
+    align-items: center;
+}
+
+.con2 {
+    display: flex;
+    align-items: center;
+}
+
+.todo_text {
+    width: 300px;
+    padding-left: 10px;
+    padding-top: 5px;
+    vertical-align: auto;
+}
+
+.date {
+    font-size: 0.8em;
+    padding-top: 10px;
+}
+
+.check_box {
+    appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.check_box:checked {
+    background-color: white;
+    background-image: url("image/checkmark.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.edit {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: none;
+    background-color: transparent;
+    background-image: url("image/edit.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.edit_done {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: none;
+    background-color: transparent;
+    background-image: url("image/editdone.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.editing {
+    width: 306px;
+    height: 33px;
+    vertical-align: middle;
+    line-height: 33px;
+    border: none;
+    border-radius: 30px;
+    font-family: "GangwonEdu_OTFLightA";
+    font-size: 1.5rem;
+    padding-left: 5px;
+}
+
+.editing:focus {
+    outline: none;
+}
+
+.delete {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: none;
+    background-color: transparent;
+    background-image: url("image/delete.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
