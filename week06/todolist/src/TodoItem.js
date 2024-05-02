@@ -9,17 +9,14 @@ function TodoItem({
 }) {
     const [isEditing, setIsEditing] = useState(false);
 
-    const deleteTodo = useCallback(() => {
-        setTodoList((prevList) =>
-            prevList.filter((item) => item.id !== todoThis.id)
+    function deleteTodo() {
+        setTodoList(todoList.filter((todoItem) => todoItem.id !== todoThis.id));
+    }
+    function deleteCompleted() {
+        setCompletedList(
+            completedList.filter((todoItem) => todoItem.id !== todoThis.id)
         );
-    }, [todoThis.id, setTodoList]);
-
-    const deleteCompleted = useCallback(() => {
-        setCompletedList((prevList) =>
-            prevList.filter((item) => item.id !== todoThis.id)
-        );
-    }, [todoThis.id, setCompletedList]);
+    }
 
     const toggleEdit = useCallback(() => {
         setIsEditing((prev) => !prev);
@@ -35,10 +32,10 @@ function TodoItem({
         };
         if (todoThis.done) {
             setTodoList((prevList) => [...prevList, updatedTodo]);
-            deleteCompleted();
+            deleteCompleted(todoThis);
         } else {
             setCompletedList([...completedList, updatedTodo]);
-            deleteTodo();
+            deleteTodo(todoThis);
         }
     }, [todoThis, setTodoList, setCompletedList, deleteTodo, deleteCompleted]);
 
