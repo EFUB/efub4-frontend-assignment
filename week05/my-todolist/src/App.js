@@ -7,20 +7,8 @@ import { useCallback, useEffect, useState } from "react";
 
 const TODO_LIST_KEY = "todoList";
 
-// 커스텀 훅 이용해 배경 색 변경 코드
-function useTheme(theme, toggleTheme) {
-  useEffect(() => {
-    document.documentElement.style.backgroundColor =
-      theme === "light" ? "#f2eae4" : "black";
-  }, [theme, toggleTheme]);
-}
-
-function App() {
-  const [todoList, setTodoList] = useState(() => {
-    const saveTodoList = localStorage.getItem(TODO_LIST_KEY);
-    return saveTodoList ? JSON.parse(saveTodoList) : [];
-  });
-  /*const [theme, setTheme] = useState("light");
+// 커스텀 훅 사용하지 않는 코드
+/*const [theme, setTheme] = useState("light");
   const [buttonEmoji, setButtonEmoji] = useState("🌞");
 
   const toggleTheme = useCallback(() => {
@@ -40,6 +28,20 @@ function App() {
   useEffect(() => {
     localStorage.setItem(TODO_LIST_KEY, JSON.stringify(todoList));
   }, [todoList]);*/
+
+// useTheme이라는 이름의 커스텀 훅 생성
+function useTheme(theme, toggleTheme) {
+  useEffect(() => {
+    document.documentElement.style.backgroundColor =
+      theme === "light" ? "#f2eae4" : "black";
+  }, [theme, toggleTheme]);
+}
+
+function App() {
+  const [todoList, setTodoList] = useState(() => {
+    const saveTodoList = localStorage.getItem(TODO_LIST_KEY);
+    return saveTodoList ? JSON.parse(saveTodoList) : [];
+  });
 
   const [theme, setTheme] = useState("light");
   const [buttonEmoji, setButtonEmoji] = useState("🌞");
