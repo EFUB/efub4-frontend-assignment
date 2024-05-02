@@ -1,5 +1,5 @@
 import "./TodoItem.css";
-
+import React from "react";
 function TodoItem({ todoThis, todoList, setTodoList }) {
   function deleteTodo() {
     setTodoList(todoList.filter((todoItem) => todoItem.id !== todoThis.id));
@@ -26,4 +26,4 @@ function TodoItem({ todoThis, todoList, setTodoList }) {
   );
 }
 
-export default TodoItem;
+export default React.memo(TodoItem);

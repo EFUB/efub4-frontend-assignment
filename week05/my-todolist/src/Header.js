@@ -1,6 +1,7 @@
 import "./Header.css";
+import React from "react";
 
-function Header() {
+function Header(props) {
   return <h1 className="header">Todo-List</h1>;
 }
-export default Header;
+export default React.memo(Header);
