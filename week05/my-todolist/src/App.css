@@ -54,7 +54,12 @@ body {
 
 .deleteBtn {
   float: right;
-  margin-left: 5px;
+}
+
+.editBtn,
+.deleteBtn {
+  background: none;
+  border: none;
 }
 
 .todo-item input[type="checkbox"]:checked ~ span {

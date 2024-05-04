@@ -1,5 +1,8 @@
 import React, { useCallback } from "react";
 
+import { TiTrash } from "react-icons/ti";
+import { MdOutlineEdit } from "react-icons/md";
+
 function TodoItem({ todoThis, todoList, setTodoList }) {
   const deleteTodo = useCallback(() => {
     setTodoList(todoList.filter((todoItem) => todoItem.id !== todoThis.id));
@@ -46,18 +49,13 @@ function TodoItem({ todoThis, todoList, setTodoList }) {
       />
       <span>{todoThis.text}</span>
       <div style={{ float: "right" }}>
-        <input
-          type="button"
-          className="editBtn"
-          value="수정"
-          onClick={editTodo}
-        />
-        <input
-          type="button"
-          className="deleteBtn"
-          value="삭제"
-          onClick={deleteTodo}
-        />
+        <button className="editBtn" onClick={editTodo}>
+          <MdOutlineEdit />
+        </button>
+
+        <button className="deleteBtn" value="삭제" onClick={deleteTodo}>
+          <TiTrash />
+        </button>
       </div>
     </li>
   );
