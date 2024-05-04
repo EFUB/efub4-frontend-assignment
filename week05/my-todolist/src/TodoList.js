@@ -1,4 +1,5 @@
 import TodoItem from "./TodoItem";
+import React from "react";
 
 function TodoList({ todoList, setTodoList }) {
   return (
@@ -16,4 +17,4 @@ function TodoList({ todoList, setTodoList }) {
   );
 }
 
-export default TodoList;
+export default React.memo(TodoList);
