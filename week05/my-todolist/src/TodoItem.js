@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 function TodoItem({ todoThis, todoList, setTodoList }) 
 {
-    const [checkedTime, setCheckedTime] = useState(null);
     const [editingText, setEditingText] = useState(todoThis.text);
     const [isEditing, setIsEditing] = useState(false); // 수정 모드를 관리하는 state 추가
 
@@ -14,7 +13,6 @@ function TodoItem({ todoThis, todoList, setTodoList })
     function completeTodo() 
     {
         const currentTime = new Date().toLocaleTimeString();
-        setCheckedTime(currentTime);
 
         setTodoList(
             todoList.map((todoItem) => 
@@ -51,7 +49,7 @@ function TodoItem({ todoThis, todoList, setTodoList })
             ) : (
                 <span className={todoThis.done ? "done-text" : ""}>{todoThis.text}</span>
             )}
-            {todoThis.checkedTime && <span>{todoThis.checkedTime}</span>}
+            {todoThis.checkedTime && todoThis.done && <span>{todoThis.checkedTime}</span>}
             {todoThis.done && <span>에 내가 해냄! </span>}
             <input type="button" value="삭제" onClick={deleteTodo} className="del-btn"/>
             <input type="button" value={isEditing ? "저장" : "수정"} onClick={() => setIsEditing(!isEditing)} className="edit-btn"/>
