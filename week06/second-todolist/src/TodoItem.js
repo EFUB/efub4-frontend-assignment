@@ -1,39 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
-function TodoItem({ todoThis, todoList, setTodoList }) 
-{
+function TodoItem({ todoThis, todoList, setTodoList }) {
     const [editingText, setEditingText] = useState(todoThis.text);
-    const [isEditing, setIsEditing] = useState(false); // 수정 모드를 관리하는 state 추가
+    const [isEditing, setIsEditing] = useState(false);
 
-    function deleteTodo() 
-    {
-        setTodoList(todoList.filter(todoItem => todoItem.id !== todoThis.id));
-    }
+    const deleteTodo = useCallback(() => {
+        setTodoList(prevTodoList => prevTodoList.filter(todoItem => todoItem.id !== todoThis.id));
+    }, [setTodoList, todoThis.id]);
 
-    function completeTodo() 
-    {
+    const completeTodo = useCallback(() => {
         const currentTime = new Date().toLocaleTimeString();
 
-        setTodoList(
-            todoList.map((todoItem) => 
-            {
+        setTodoList(prevTodoList =>
+            prevTodoList.map(todoItem => {
                 return todoItem.id === todoThis.id ? { ...todoThis, done: !todoThis.done, checkedTime: currentTime } : todoItem;
             })
         );
-    }
+    }, [setTodoList, todoThis]);
 
     function handleTextChange(event) {
         setEditingText(event.target.value);
     }
 
     function handleTextSave() {
-        setTodoList(
-            todoList.map((todoItem) => 
-            {
+        setTodoList(prevTodoList =>
+            prevTodoList.map(todoItem => {
                 return todoItem.id === todoThis.id ? { ...todoThis, text: editingText } : todoItem;
             })
         );
-        setIsEditing(false); // 수정이 완료되면 수정 모드 비활성화
+        setIsEditing(false);
     }
 
     return (
