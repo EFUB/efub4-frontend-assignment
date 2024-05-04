@@ -1,14 +1,8 @@
 import React, { useState } from "react";
 
-const StateTest = () => {
-  // 임시 state 생성
-  const [tempState, setTempState] = useState(0);
-
-  function updateTempState() {
-    setTempState((prevState) => prevState + 1);
-  }
+const StateTest = ({ tempState, setTempState }) => {
   return (
-    <button id="testBtn" onClick={updateTempState}>
+    <button id="testBtn" onClick={() => setTempState(tempState + 1)}>
       테스트 버튼
     </button>
   );

@@ -4,6 +4,7 @@ function TodoItem({ todoThis, todoList, setTodoList }) {
   const deleteTodo = useCallback(() => {
     setTodoList(todoList.filter((todoItem) => todoItem.id !== todoThis.id));
   }, [todoThis.id, todoList, setTodoList]);
+
   const editTodo = useCallback(() => {
     // 수정 구현
     const newText = prompt("새로운 내용을 입력하세요", todoThis.text);
@@ -16,15 +17,15 @@ function TodoItem({ todoThis, todoList, setTodoList }) {
         )
       );
     }
-  }, [todoThis.id, todoThis.text, setTodoList]);
+  }, [todoThis.id, todoThis.text, todoList, setTodoList]);
 
-  /*완료된 것 아래쪽으로 옮기기. 왜 안되지?? */
-  const moveCheckedToEnd = (todoList) => {
+  //완료된 것 아래쪽으로 옮기기
+  const moveCheckedToEnd = useCallback(() => {
     const checkedTodos = todoList.filter((todoThis) => todoThis.done);
     const uncheckedTodos = todoList.filter((todoThis) => !todoThis.done);
     const sortedTodos = [...uncheckedTodos, ...checkedTodos];
     setTodoList(sortedTodos);
-  };
+  }, [todoList, setTodoList]);
 
   const completeTodo = useCallback(() => {
     const completeEditedList = todoList.map((todoItem) => {
@@ -33,15 +34,15 @@ function TodoItem({ todoThis, todoList, setTodoList }) {
         : todoItem;
     });
     moveCheckedToEnd(completeEditedList);
-  }, [todoThis, setTodoList]);
+  }, [todoThis, todoList, moveCheckedToEnd]);
 
   return (
     <li className="todo-item">
       <input
         type="checkbox"
-        class="checkbox"
+        className="checkbox"
         checked={todoThis.done}
-        onClick={completeTodo}
+        onChange={completeTodo}
       />
       <span>{todoThis.text}</span>
       <div style={{ float: "right" }}>

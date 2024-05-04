@@ -7,6 +7,7 @@ function TodoList({ todoList, setTodoList }) {
       {todoList.map((todoItem) => {
         return (
           <TodoItem
+            key={todoItem.id}
             todoThis={todoItem}
             todoList={todoList}
             setTodoList={setTodoList}

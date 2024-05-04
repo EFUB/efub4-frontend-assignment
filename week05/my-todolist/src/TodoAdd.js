@@ -1,3 +1,4 @@
+import React from "react";
 function TodoAdd({ todoList, setTodoList }) {
   function addTodo(event) {
     event.preventDefault();
@@ -24,4 +25,4 @@ function TodoAdd({ todoList, setTodoList }) {
   );
 }
 
-export default TodoAdd;
+export default React.memo(TodoAdd);
