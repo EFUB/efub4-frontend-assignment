@@ -1,5 +1,6 @@
 import TodoItem from "./TodoItem";
 import "./TodoList.css";
+import React from "react";
 function TodoList({ todoList, setTodoList }) {
   return (
     <ul className="todo-list">
@@ -16,4 +17,4 @@ function TodoList({ todoList, setTodoList }) {
   );
 }
 
-export default TodoList;
+export default React.memo(TodoList);
