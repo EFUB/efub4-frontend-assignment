@@ -1,4 +1,5 @@
 import TodoItem from "./TodoItem";
+import React from "react";
 
 function TodoList({ todoList, setTodoList }) {
   return (
@@ -6,6 +7,7 @@ function TodoList({ todoList, setTodoList }) {
       {todoList.map((todoItem) => {
         return (
           <TodoItem
+            key={todoItem.id}
             todoThis={todoItem}
             todoList={todoList}
             setTodoList={setTodoList}
@@ -16,4 +18,4 @@ function TodoList({ todoList, setTodoList }) {
   );
 }
 
-export default TodoList;
+export default React.memo(TodoList);

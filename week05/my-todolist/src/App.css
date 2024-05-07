@@ -1,11 +1,4 @@
 @font-face {
-  font-family: "Her-Gilwonok";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_ten@1.0/Her-Gilwonok.woff")
-    format("woff");
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
   font-family: "Her-Leeoksun";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_ten@1.0/Her-Leeoksun.woff")
     format("woff");
@@ -13,8 +6,12 @@
   font-style: normal;
 }
 
+#textBtn {
+  background-color: white;
+  color: white;
+}
 body {
-  font-family: "Her-Leeoksun", "Her-Gilwonok", sans-serif;
+  font-family: "Her-Leeoksun", sans-serif;
   background-image: url("back.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -52,12 +49,17 @@ body {
 }
 
 .editBtn {
-  float: right;
-  margin-left: 5px;
+  float: left;
 }
 
 .deleteBtn {
   float: right;
+}
+
+.editBtn,
+.deleteBtn {
+  background: none;
+  border: none;
 }
 
 .todo-item input[type="checkbox"]:checked ~ span {

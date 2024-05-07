@@ -1,8 +1,14 @@
+import React, { useCallback } from "react";
+
+import { TiTrash } from "react-icons/ti";
+import { MdOutlineEdit } from "react-icons/md";
+
 function TodoItem({ todoThis, todoList, setTodoList }) {
-  function deleteTodo() {
+  const deleteTodo = useCallback(() => {
     setTodoList(todoList.filter((todoItem) => todoItem.id !== todoThis.id));
-  }
-  function editTodo() {
+  }, [todoThis.id, todoList, setTodoList]);
+
+  const editTodo = useCallback(() => {
     // 수정 구현
     const newText = prompt("새로운 내용을 입력하세요", todoThis.text);
     if (newText !== null) {
@@ -14,49 +20,45 @@ function TodoItem({ todoThis, todoList, setTodoList }) {
         )
       );
     }
-  }
+  }, [todoThis.id, todoThis.text, todoList, setTodoList]);
 
-  /*완료된 것 아래쪽으로 옮기기 */
-  const moveCheckedToEnd = () => {
-    const checkedTodos = todoList.filter((todoItem) => todoThis.done);
-    const uncheckedTodos = todoList.filter((todoItem) => !todoThis.done);
+  //완료된 것 아래쪽으로 옮기기
+  const moveCheckedToEnd = useCallback(() => {
+    const checkedTodos = todoList.filter((todoThis) => todoThis.done);
+    const uncheckedTodos = todoList.filter((todoThis) => !todoThis.done);
     const sortedTodos = [...uncheckedTodos, ...checkedTodos];
     setTodoList(sortedTodos);
-  };
+  }, [todoList, setTodoList]);
 
-  function completeTodo() {
-    setTodoList(
-      todoList.map((todoItem) => {
-        return todoItem.id === todoThis.id
-          ? { ...todoThis, done: !todoThis.done }
-          : todoItem;
-      })
-    );
-  }
+  const completeTodo = useCallback(() => {
+    const completeEditedList = todoList.map((todoItem) => {
+      return todoItem.id === todoThis.id
+        ? { ...todoThis, done: !todoThis.done }
+        : todoItem;
+    });
+    moveCheckedToEnd(completeEditedList);
+  }, [todoThis, todoList, moveCheckedToEnd]);
 
   return (
     <li className="todo-item">
       <input
         type="checkbox"
-        class="checkbox"
+        className="checkbox"
         checked={todoThis.done}
-        onClick={completeTodo}
+        onChange={completeTodo}
       />
       <span>{todoThis.text}</span>
-      <input
-        type="button"
-        className="editBtn"
-        value="수정"
-        onClick={editTodo}
-      />
-      <input
-        type="button"
-        className="deleteBtn"
-        value="삭제"
-        onClick={deleteTodo}
-      />
+      <div style={{ float: "right" }}>
+        <button className="editBtn" onClick={editTodo}>
+          <MdOutlineEdit />
+        </button>
+
+        <button className="deleteBtn" value="삭제" onClick={deleteTodo}>
+          <TiTrash />
+        </button>
+      </div>
     </li>
   );
 }
 
-export default TodoItem;
+export default React.memo(TodoItem);

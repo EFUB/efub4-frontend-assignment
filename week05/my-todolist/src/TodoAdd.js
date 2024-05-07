@@ -1,12 +1,13 @@
+import React from "react";
 function TodoAdd({ todoList, setTodoList }) {
   function addTodo(event) {
     event.preventDefault();
     const newTodoItem = {
       id: Date.now(),
       text: event.target["todo-text"].value,
-      dont: false,
+      done: false,
     };
-    setTodoList([...todoList, newTodoItem]);
+    setTodoList([newTodoItem, ...todoList]); // 새로 입력하는 할 일이 맨 위에 오도록 수정
     event.target.reset();
   }
 
@@ -24,4 +25,4 @@ function TodoAdd({ todoList, setTodoList }) {
   );
 }
 
-export default TodoAdd;
+export default React.memo(TodoAdd);
