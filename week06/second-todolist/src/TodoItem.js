@@ -1,39 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
-function TodoItem({ todoThis, todoList, setTodoList }) 
-{
+function TodoItem({ todoThis, todoList, setTodoList }) {
     const [editingText, setEditingText] = useState(todoThis.text);
-    const [isEditing, setIsEditing] = useState(false); // 수정 모드를 관리하는 state 추가
+    const [isEditing, setIsEditing] = useState(false);
 
-    function deleteTodo() 
-    {
-        setTodoList(todoList.filter(todoItem => todoItem.id !== todoThis.id));
-    }
+    const deleteTodo = useCallback(() => {
+        setTodoList(prevTodoList => prevTodoList.filter(todoItem => todoItem.id !== todoThis.id));
+    }, [setTodoList, todoThis.id]);
 
-    function completeTodo() 
-    {
+    const completeTodo = useCallback(() => {
         const currentTime = new Date().toLocaleTimeString();
 
-        setTodoList(
-            todoList.map((todoItem) => 
-            {
+        setTodoList(prevTodoList =>
+            prevTodoList.map(todoItem => {
                 return todoItem.id === todoThis.id ? { ...todoThis, done: !todoThis.done, checkedTime: currentTime } : todoItem;
             })
         );
-    }
+    }, [setTodoList, todoThis]);
 
     function handleTextChange(event) {
         setEditingText(event.target.value);
     }
 
     function handleTextSave() {
-        setTodoList(
-            todoList.map((todoItem) => 
-            {
+        setTodoList(prevTodoList =>
+            prevTodoList.map(todoItem => {
                 return todoItem.id === todoThis.id ? { ...todoThis, text: editingText } : todoItem;
             })
         );
-        setIsEditing(false); // 수정이 완료되면 수정 모드 비활성화
+        setIsEditing(false);
     }
 
     return (
@@ -51,8 +46,8 @@ function TodoItem({ todoThis, todoList, setTodoList })
             )}
             {todoThis.checkedTime && todoThis.done && <span>{todoThis.checkedTime}</span>}
             {todoThis.done && <span>에 내가 해냄! </span>}
-            <input type="button" value="삭제" onClick={deleteTodo} className="del-btn"/>
             <input type="button" value={isEditing ? "저장" : "수정"} onClick={() => setIsEditing(!isEditing)} className="edit-btn"/>
+            <input type="button" value="X" onClick={deleteTodo} className="del-btn"/>
         </li>
     )
 }
