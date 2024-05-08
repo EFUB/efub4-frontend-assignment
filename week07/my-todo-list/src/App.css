@@ -1,0 +1,6 @@
+.todo-item input[type="checkbox"]:checked ~ span {
+  text-decoration: line-through;
+}
+.todo-item {
+  list-style: none;
+}
