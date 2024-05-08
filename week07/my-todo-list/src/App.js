@@ -1,42 +1,33 @@
-import React, { useEffect, useState } from "react";
-import { Routes, Route, NavLink } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import SubPage from "./pages/SubPage";
+import React, { useState, useEffect } from "react";
+import Header from "./Header";
+import TodoList from "./TodoList";
+import TodoAdd from "./TodoAdd";
 import "./App.css";
+const TODO_LIST_KEY = "todolist";
 
 function App() {
-  const style = {
-    width: "300px",
-    display: "flex",
-    justifyContent: "space-around",
-    backgroundColor: "lightgray",
-    padding: "10px",
-  };
-  const activeStyle = {
-    color: "darkred",
-    fontWeight: "bold",
+  const [todoList, setTodoList] = useState(() => {
+    const savedTodoList = localStorage.getItem(TODO_LIST_KEY);
+    return savedTodoList ? JSON.parse(savedTodoList) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem(TODO_LIST_KEY, JSON.stringify(todoList));
+  }, [todoList]);
+
+  const [temp, setTemp] = useState(0);
+  const handleTemp = () => {
+    setTemp(temp + 1);
   };
   return (
-    <>
-      <div style={style}>
-        <NavLink
-          to="/"
-          style={({ isActive }) => (isActive ? activeStyle : null)}
-        >
-          Home
-        </NavLink>
-        <NavLink
-          to="/sub"
-          style={({ isActive }) => (isActive ? activeStyle : null)}
-        >
-          Sub
-        </NavLink>
-      </div>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/sub" element={<SubPage />} />
-      </Routes>
-    </>
+    <div className="App">
+      <Header />
+      <button className="state" onClick={handleTemp}>
+        부모 컴포넌트 업데이트
+      </button>
+      <TodoList todoList={todoList} setTodoList={setTodoList} />
+      <TodoAdd todoList={todoList} setTodoList={setTodoList} />
+    </div>
   );
 }
 

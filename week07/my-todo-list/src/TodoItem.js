@@ -1,34 +1,32 @@
-import React, { useCallback } from "react";
-function TodoItem({ todoThis, todoList, setTodoList }) {
-  console.log("TodoItem 컴포넌트 렌더링");
+import React from "react";
+const areEqual = (prevProps, nextProps) => {
+  return prevProps.todoItem === nextProps.todoItem;
+};
 
-  const deleteTodo = useCallback(() => {
-    setTodoList(todoList.filter((todoItem) => todoItem.id !== todoThis.id));
-  }, [todoThis.id, todoList, setTodoList]);
-
-  const completeTodo = useCallback(() => {
+function TodoItem({ todoItem, todoList, setTodoList }) {
+  function deleteTodo() {
+    setTodoList(todoList.filter((item) => item.id !== todoItem.id));
+  }
+  function completeTodo() {
     setTodoList(
-      todoList.map((todoItem) =>
-        todoItem.id === todoThis.id
-          ? { ...todoThis, done: !todoThis.done, key: todoThis.id }
-          : todoItem
-      )
+      todoList.map((item) => {
+        return item.id === todoItem.id
+          ? { ...item, done: !todoItem.done }
+          : item;
+      })
     );
-  }, [todoThis, todoList, setTodoList]);
-
+  }
   return (
     <li className="todo-item">
+      <input type="checkbox" checked={todoItem.done} onClick={completeTodo} />
+      <span>{todoItem.text}</span>
       <input
-        type="checkbox"
-        readOnly
-        checked={todoThis.done}
-        onClick={completeTodo}
-        className="checkbox"
+        type="button"
+        value="x"
+        onClick={deleteTodo}
+        className="delete-button"
       />
-      <span className="text">{todoThis.text}</span>
-      <input type="button" value="X" onClick={deleteTodo} className="button" />
     </li>
   );
 }
-
-export default React.memo(TodoItem);
+export default React.memo(TodoItem, areEqual);

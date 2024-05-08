@@ -1,23 +1,20 @@
-import React, { useMemo } from "react";
 import TodoItem from "./TodoItem";
+import React from "react";
 
 function TodoList({ todoList, setTodoList }) {
-  console.log("TodoList 컴포넌트 렌더링");
-  const memoizedTodoItems = useMemo(() => {
-    return todoList.map((todoItem) => (
-      <TodoItem
-        key={todoItem.id}
-        todoThis={todoItem}
-        todoList={todoList}
-        setTodoList={setTodoList}
-      />
-    ));
-  }, [todoList, setTodoList]);
-
   return (
-    <div className="todo-list">
-      <ul>{memoizedTodoItems}</ul>
-    </div>
+    <ul className="todo-list">
+      {todoList.map((todoItem) => {
+        return (
+          <TodoItem
+            key={todoItem.id}
+            todoItem={todoItem}
+            todoList={todoList}
+            setTodoList={setTodoList}
+          />
+        );
+      })}
+    </ul>
   );
 }
 
