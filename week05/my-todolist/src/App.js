@@ -1,32 +1,42 @@
-import { useEffect, useState } from "react";
-import Header from "./Header";
-import TodoList from "./TodoList";
-import TodoAdd from "./TodoAdd";
-import StateTest from "./StateTest";
+import { Routes, Route, NavLink } from "react-router-dom";
+//import StateTest from "./StateTest";
 import "./App.css";
-
-const TODO_LIST_KEY = "todoList";
+import MyTodolist from "./components/pages/MyTodolist";
+import MyPlaylist from "./components/pages/MyPlaylist";
 
 function App() {
-  const [todoList, setTodoList] = useState(() => {
-    const savedTodoList = localStorage.getItem(TODO_LIST_KEY);
-    return savedTodoList ? JSON.parse(savedTodoList) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem(TODO_LIST_KEY, JSON.stringify(todoList));
-  }, [todoList]);
-
-  // 임시 state 생성
-  const [tempState, setTempState] = useState(0);
-
+  const style = {
+    width: "300px",
+    display: "flex",
+    justifyContent: "space-around",
+    margin: "0 auto",
+    padding: "10px",
+    textDecoration: "none",
+  };
   return (
-    <div className="App">
-      <StateTest tempState={tempState} setTempState={setTempState} />
-      <Header />
-      <TodoAdd todoList={todoList} setTodoList={setTodoList} />
-      <TodoList todoList={todoList} setTodoList={setTodoList} />
-    </div>
+    <>
+      <div style={style}>
+        <NavLink to="/">
+          {" "}
+          <img
+            src="/images/memo.png"
+            alt="MyTodo"
+            style={{ width: "50px", height: "50px" }}
+          />
+        </NavLink>
+        <NavLink to="/myPlaylist">
+          <img
+            src="/images/record.png"
+            alt="MyPli"
+            style={{ width: "50px", height: "50px" }}
+          />
+        </NavLink>
+      </div>
+      <Routes>
+        <Route path="/" element={<MyTodolist />} />
+        <Route path="/myPlaylist" element={<MyPlaylist />} />
+      </Routes>
+    </>
   );
 }
 
