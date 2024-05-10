@@ -1,4 +1,4 @@
-import "./App.css";
+import "../App.css";
 import React from "react";
 function TodoAdd({ todoList, setTodoList }) {
   function addTodo(event) {

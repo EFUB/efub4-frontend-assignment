@@ -1,40 +1,39 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Header from "./Header";
-import TodoList from "./TodoList";
-import TodoAdd from "./TodoAdd";
-import { useCallback, useEffect, useState } from "react";
+import Header from "./components/Header";
+import TodoList from "./components/TodoList";
+import TodoAdd from "./components/TodoAdd";
+import useTheme from "./useTheme";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import Weather from "./Weathear";
 
 const TODO_LIST_KEY = "todoList";
 
-// 커스텀 훅 사용하지 않는 코드
-/*const [theme, setTheme] = useState("light");
-  const [buttonEmoji, setButtonEmoji] = useState("🌞");
+function Home({ todoList, setTodoList, toggleTheme, buttonEmoji }) {
+  const navigate = useNavigate();
+  return (
+    <div className="App">
+      <div className="center_">
+        <div className="topbox">
+          <button className="changeButton" onClick={toggleTheme}>
+            {buttonEmoji}
+          </button>
+          <button
+            className="weather"
+            onClick={() => {
+              navigate("/weather");
+            }}
+          >
+            🌈
+          </button>
+        </div>
+      </div>
 
-  const toggleTheme = useCallback(() => {
-    if (theme == "light") {
-      setTheme("dark");
-      setButtonEmoji("🌛");
-    } else if (theme == "dark") {
-      setTheme("light");
-      setButtonEmoji("🌞");
-    }
-  }, [theme]);
-  useEffect(() => {
-    // theme 상태가 변경될 때마다 배경색을 변경
-    document.documentElement.style.backgroundColor =
-      theme === "light" ? "#f2eae4" : "black";
-  }, [theme]);
-  useEffect(() => {
-    localStorage.setItem(TODO_LIST_KEY, JSON.stringify(todoList));
-  }, [todoList]);*/
-
-// useTheme이라는 이름의 커스텀 훅 생성
-function useTheme(theme, toggleTheme) {
-  useEffect(() => {
-    document.documentElement.style.backgroundColor =
-      theme === "light" ? "#f2eae4" : "black";
-  }, [theme, toggleTheme]);
+      <Header />
+      <TodoAdd todoList={todoList} setTodoList={setTodoList} />
+      <TodoList todoList={todoList} setTodoList={setTodoList} />
+    </div>
+  );
 }
 
 function App() {
@@ -42,30 +41,27 @@ function App() {
     const saveTodoList = localStorage.getItem(TODO_LIST_KEY);
     return saveTodoList ? JSON.parse(saveTodoList) : [];
   });
-
-  const [theme, setTheme] = useState("light");
-  const [buttonEmoji, setButtonEmoji] = useState("🌞");
-
-  const toggleTheme = useCallback(() => {
-    if (theme == "light") {
-      setTheme("dark");
-      setButtonEmoji("🌛");
-    } else if (theme == "dark") {
-      setTheme("light");
-      setButtonEmoji("🌞");
-    }
-  }, [theme]);
-
-  useTheme(theme, toggleTheme);
+  useEffect(() => {
+    localStorage.setItem(TODO_LIST_KEY, JSON.stringify(todoList));
+  }, [todoList]);
+  const { toggleTheme, buttonEmoji } = useTheme();
   return (
-    <div className="App">
-      <button className="changeButton" onClick={toggleTheme}>
-        {buttonEmoji}
-      </button>
-      <Header />
-      <TodoAdd todoList={todoList} setTodoList={setTodoList} />
-      <TodoList todoList={todoList} setTodoList={setTodoList} />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              todoList={todoList}
+              setTodoList={setTodoList}
+              toggleTheme={toggleTheme}
+              buttonEmoji={buttonEmoji}
+            />
+          }
+        />
+        <Route path="/weather" element={<Weather />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
