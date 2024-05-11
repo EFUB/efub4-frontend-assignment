@@ -4,7 +4,7 @@ function TodoAdd({ todoList, setTodoList }) {
     event.preventDefault();
     const newTodoItem = {
       id: Date.now(),
-      text: event.target["todo-text"].value,
+      text: event.target["add-text"].value,
       done: false,
     };
     setTodoList([...todoList, newTodoItem]);
@@ -14,11 +14,12 @@ function TodoAdd({ todoList, setTodoList }) {
     <form className="todo-add" onSubmit={addTodo}>
       <input
         text="text"
-        name="todo-text"
+        name="add-text"
         required
         placeholder="오늘의 할 일은?"
+        className="add-text"
       />
-      <input type="submit" value="+" />
+      <input type="submit" value="+" className="submit-button" />
     </form>
   );
 }

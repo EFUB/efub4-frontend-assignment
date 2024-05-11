@@ -1,12 +1,10 @@
 import React from "react";
-const areEqual = (prevProps, nextProps) => {
-  return prevProps.todoItem === nextProps.todoItem;
-};
 
 function TodoItem({ todoItem, todoList, setTodoList }) {
   function deleteTodo() {
     setTodoList(todoList.filter((item) => item.id !== todoItem.id));
   }
+
   function completeTodo() {
     setTodoList(
       todoList.map((item) => {
@@ -16,10 +14,16 @@ function TodoItem({ todoItem, todoList, setTodoList }) {
       })
     );
   }
+
   return (
     <li className="todo-item">
-      <input type="checkbox" checked={todoItem.done} onClick={completeTodo} />
-      <span>{todoItem.text}</span>
+      <input
+        type="checkbox"
+        checked={todoItem.done}
+        onChange={completeTodo} // Use onChange instead of onClick
+        className="check-box"
+      />
+      <span className="item-text">{todoItem.text}</span>
       <input
         type="button"
         value="x"
@@ -29,4 +33,5 @@ function TodoItem({ todoItem, todoList, setTodoList }) {
     </li>
   );
 }
-export default React.memo(TodoItem, areEqual);
+
+export default React.memo(TodoItem);
