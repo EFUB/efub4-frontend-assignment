@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import requests from "./requests";
 import instance from "./instance";
+import "./Banner.css";
 
 function Banner() {
   const [movie, setMovie] = useState(null);
@@ -22,25 +23,31 @@ function Banner() {
 
   console.log(movie);
 
-  // Separate style properties
-  const backgroundStyles = {
-    backgroundSize: "auto",
-    backgroundImage: movie
-      ? `url("https://image.tmdb.org/t/p/original/${movie.backdrop_path}")`
-      : "",
-    backgroundPosition: "center center",
-  };
-
+  function truncate(str, n) {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+  }
   return (
-    <header className="banner" style={backgroundStyles}>
+    <header
+      className="banner"
+      style={{
+        backgroundSize: "100% 100%",
+        backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
+        backgroundPosition: "center center",
+      }}
+    >
       <div className="banner__contents">
-        <h1>{movie?.title || movie?.name || movie?.original_name}</h1>
+        <h1 className="banner__title">
+          {movie?.title || movie?.name || movie?.original_name}
+        </h1>
         <div className="banner__buttons">
           <button className="banner__button">Play</button>
           <button className="banner__button">My List</button>
         </div>
-        <h1 className="banner__description">{movie?.overview}</h1>
+        <h1 className="banner__description">
+          {truncate(movie?.overview, 150)}
+        </h1>
       </div>
+      <div className="banner--fadeBottom"></div>
     </header>
   );
 }
