@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 html {
   background-color: #f2eae4;
@@ -7,12 +8,33 @@ html {
   justify-content: center;
 }
 .changeButton {
+  cursor: pointer;
   transform: scale(1.5);
   border: none;
   border-radius: 5px;
   margin-top: 3vh;
   background-color: transparent;
   font-size: 3vh;
+  margin-left: 5vw;
+}
+.weather {
+  cursor: pointer;
+  transform: scale(1.5);
+  border: none;
+  border-radius: 5px;
+  margin-top: 3vh;
+  background-color: transparent;
+  font-size: 3vh;
+  margin-right: 5vw;
+}
+.center_ {
+  display: flex;
+  justify-content: center;
+}
+.topbox {
+  display: flex;
+  justify-content: space-around;
+  width: 40vw;
 }
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
 body {

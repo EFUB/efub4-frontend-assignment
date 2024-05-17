@@ -1,0 +1,38 @@
+html {
+  display: flex;
+  justify-content: center;
+}
+.weather-container {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+}
+.city_W {
+  border: none;
+  background-color: #eff2e4;
+}
+.topbox_W {
+  display: flex;
+  justify-content: space-around;
+  width: 40vw;
+}
+.title_W {
+  border: none;
+  font-size: 3.5vw;
+  margin-bottom: 10px;
+}
+.W_box {
+  margin-top: 5vh;
+  background-color: #adbfa8;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: 35vh;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 12%;
+}
