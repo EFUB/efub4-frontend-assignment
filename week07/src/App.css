@@ -1,0 +1,117 @@
+.App,
+.calendar,
+.home,
+.clock {
+  border: 1px solid black;
+  width: 500px;
+  padding: 20px;
+  padding-bottom: 50px;
+  margin-top: 4px;
+  background-color: white;
+  border-radius: 10px;
+}
+.home {
+  h1 {
+    text-align: center;
+  }
+  p {
+    font-size: 16px;
+  }
+  #p {
+    font-size: 12px;
+  }
+}
+.calendar {
+  h1 {
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+.clock {
+  h1 {
+    font-size: 50px;
+  }
+  span {
+    font-size: 30px;
+  }
+  padding-top: 10px;
+  padding-bottom: 60px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.react-calendar__tile--now {
+  background-color: #ef5350;
+  color: purple;
+}
+.react-calendar {
+  border: 0.8px solid;
+  border-radius: 10px;
+  padding: 0px 12px;
+  color: var(--festie-gray-800, rgb(155, 155, 155));
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+  text-align: start;
+  appearance: none;
+  background-color: white;
+  width: 500px;
+}
+#date {
+  padding-bottom: 10px;
+}
+.layout {
+  padding-top: 20px;
+  margin-top: 50px;
+  button {
+    font-size: 20px;
+    background-color: white;
+    padding-right: 8px;
+    padding-left: 8px;
+    border-radius: 5px;
+  }
+}
+.todo-item {
+  font-size: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 3px;
+  margin: 5px;
+  margin-left: 30px;
+  margin-right: 70px;
+}
+.todo-item input[type="checkbox"]:checked ~ span {
+  text-decoration: line-through;
+}
+.calendar {
+  width: 500px;
+}
+.header {
+  font-size: 50px;
+  text-align: center;
+}
+.todo-add {
+  display: flex;
+  justify-content: center;
+}
+#input1 {
+  font-size: 15px;
+  text-align: center;
+  width: 300px;
+  height: 30px;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 5px;
+}
+#input2 {
+  width: 50px;
+  height: 38px;
+  margin-left: 4px;
+  font-size: 15px;
+  text-align: center;
+  background-color: pink;
+  border: 3px solid black;
+  border-radius: 5px;
+}
