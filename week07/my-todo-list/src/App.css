@@ -1,6 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Gaegu&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gaegu&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+/*전체*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+  font-family: "Gaegu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+/*App*/
+.App {
+  height: 100vh;
+  background-color: #a9c9ff;
+  background-image: linear-gradient(180deg, #a9c9ff 0%, #ffbbec 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+/*NavBar*/
+.nav {
+  width: 40rem;
+  justify-content: space-around;
+  display: flex;
+  background-color: "#a9c9ff";
+  padding: 1rem;
+  font-size: 4rem;
+  text-decoration-line: none;
+}
+.active {
+  color: rgb(237, 36, 70);
+}
+
+/*TodoItem*/
 .todo-item input[type="checkbox"]:checked ~ span {
   text-decoration: line-through;
 }
 .todo-item {
   list-style: none;
+}
+/*Header*/
+.header {
+  height: 100px;
+  font-size: 5rem;
+  font-weight: 400;
+  font-style: normal;
+  position: absolute;
+  top: 5rem;
+}
+
+/*TodoList*/
+.todo-list-box {
+  flex-grow: 1;
+  width: 80%;
+  max-height: 60%;
+  display: flex;
+  justify-content: center;
+}
+.todo-list {
+  align-self: center;
+  width: 40%;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
+  padding: 8px;
+  overflow-y: auto;
+  margin-top: 2rem;
+  max-height: 80%;
+  min-height: 20rem;
+}
+
+/*TodoItem*/
+.check-box {
+  margin-left: 2rem;
+  cursor: pointer;
+}
+
+.todo-item {
+  font-size: 5rem;
+}
+.item-text {
+  margin-left: 2rem;
+}
+
+.delete-button {
+  font-size: 3rem;
+  float: right;
+  cursor: pointer;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/*TodoAdd*/
+.todo-add {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  height: 50px;
+  position: absolute;
+  bottom: 5rem;
+}
+
+.add-text,
+.submit-button {
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  border: none;
+  border-radius: 5px;
+}
+
+/*<Videopage>*/
+.video-box {
+  position: relative;
+  height: 0;
+}
+
+/*<TodoPage>*/
+/*부모컴포넌트 변경*/
+.state {
+  height: 50px;
+  float: right;
+  font-size: 2rem;
+  border: none;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  top: 10rem;
+  right: 20rem;
+}
+
+/*<Homepage>*/
+/*날짜*/
+.custom-date {
+  text-align: center;
+}
+/*명언*/
+.quote-box {
+  background: white;
+  width: 70rem;
+  padding: 4rem;
+  position: relative;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.15);
+}
+
+.quote {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+
+  line-height: 1.5;
+  letter-spacing: 0.15rem;
+}
+
+/*오늘의 명언*/
+.quote-box h2 {
+  font-size: 3rem;
+  font-family: "Gaegu", sans-serif;
+}
+
+/*명언 내용*/
+.quote-box blockquote {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  font-size: 2.6rem;
+  min-height: 11rem;
+}
+
+.quote-box blockquote::before,
+.quote-box blockquote::after {
+  content: ' " ';
+}
+
+/*명언 author*/
+.quote-box span {
+  font-size: 2rem;
+  display: block;
+  float: right;
+}
+.quote-box span::before {
+  content: "- ";
 }

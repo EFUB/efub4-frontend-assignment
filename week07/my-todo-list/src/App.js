@@ -1,33 +1,51 @@
-import React, { useState, useEffect } from "react";
-import Header from "./Header";
-import TodoList from "./TodoList";
-import TodoAdd from "./TodoAdd";
+import React from "react";
+import { Routes, Route, NavLink } from "react-router-dom";
+
 import "./App.css";
-const TODO_LIST_KEY = "todolist";
+import HomePage from "./pages/HomePage";
+import VideoPage from "./pages/VideoPage";
+import TodoPage from "./pages/TodoPage";
 
 function App() {
-  const [todoList, setTodoList] = useState(() => {
-    const savedTodoList = localStorage.getItem(TODO_LIST_KEY);
-    return savedTodoList ? JSON.parse(savedTodoList) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem(TODO_LIST_KEY, JSON.stringify(todoList));
-  }, [todoList]);
-
-  const [temp, setTemp] = useState(0);
-  const handleTemp = () => {
-    setTemp(temp + 1);
-  };
   return (
-    <div className="App">
-      <Header />
-      <button className="state" onClick={handleTemp}>
-        부모 컴포넌트 업데이트
-      </button>
-      <TodoList todoList={todoList} setTodoList={setTodoList} />
-      <TodoAdd todoList={todoList} setTodoList={setTodoList} />
-    </div>
+    <>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          backgroundColor: "#a9c9ff",
+        }}
+      >
+        <div className="nav">
+          <NavLink
+            to="/video"
+            className={({ isActive }) => (isActive ? "active" : "")}
+            style={{ textDecoration: "none" }}
+          >
+            Video
+          </NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? "active" : "")}
+            style={{ textDecoration: "none" }}
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/todo"
+            className={({ isActive }) => (isActive ? "active" : "")}
+            style={{ textDecoration: "none" }}
+          >
+            Todo
+          </NavLink>
+        </div>
+      </div>
+      <Routes>
+        <Route path="/video" element={<VideoPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/todo" element={<TodoPage />} />
+      </Routes>
+    </>
   );
 }
 
