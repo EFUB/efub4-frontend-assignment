@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import requests from "./requests";
-import instance from "./instance";
 import styled from "styled-components";
 
 const BannerContents = styled.div`
@@ -62,7 +61,7 @@ function Banner() {
 
   useEffect(() => {
     async function fetchData() {
-      const request = await instance.get(requests.fetchNetflixOriginals);
+      const request = await axios.get(requests.fetchNetflixOriginals);
       if (request.data.results.length > 0) {
         const randomIndex = Math.floor(
           Math.random() * request.data.results.length

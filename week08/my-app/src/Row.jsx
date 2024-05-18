@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import requests from "./requests";
 import axios from "axios";
-import instance from "./instance";
 import "./Row.css";
 import styled from "styled-components";
 
@@ -26,7 +25,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
 
   useEffect(() => {
     async function fetchData() {
-      const request = await instance.get(fetchUrl);
+      const request = await axios.get(fetchUrl);
       setMovies(request.data.results);
       return request;
     }
