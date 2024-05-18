@@ -28,6 +28,7 @@ const MainBack = styled.div`
   border-radius: 10px;
   padding: 20px;
   color: white;
+  margin-bottom: 80px;
 `;
 
 const Movies = styled.div`
@@ -62,11 +63,48 @@ const MovieTitle = styled.div`
 const Main = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
   const [latestMovie, setLatestMovie] = useState([]);
   const [downlodaMovie, setDownlodaMovie] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
+    const fetchMyFavorite = async () => {
+      try {
+        const movieTitles = ["Moana", "Cruella", "Bohemian Rhapsody"];
+        const moviePromises = movieTitles.map(async (title) => {
+          const response = await axios.get(
+            "https://yts.mx/api/v2/list_movies.json",
+            {
+              params: {
+                query_term: title,
+              },
+            }
+          );
+          const latestMovie = response.data.data.movies.reduce(
+            (latest, current) => {
+              return new Date(latest.year) > new Date(current.year)
+                ? latest
+                : current;
+            }
+          );
+
+          return latestMovie;
+        });
+
+        const movieResults = await Promise.all(moviePromises);
+        const moviesWithPosters = movieResults.map((movie) => ({
+          movieCd: movie.id,
+          movieNm: movie.title,
+          posterUrl: movie.medium_cover_image,
+        }));
+
+        setFavoriteMovies(moviesWithPosters);
+      } catch (err) {
+        setError(err);
+      }
+    };
+
     const fetchLatestMovies = async () => {
       try {
         const ytsResponse = await axios.get(
@@ -121,6 +159,7 @@ const Main = () => {
         setLoading(false);
       }
     };
+    fetchMyFavorite();
     fetchDownloadMovies();
     fetchLatestMovies();
   }, []);
@@ -137,6 +176,19 @@ const Main = () => {
       <AllComponents>
         <Header>Gaeun's recommendation</Header>
         <MainBack>
+          <TodayMovietxt>Gaeun's Movie</TodayMovietxt>
+          <Movies>
+            {favoriteMovies.map((movie) => (
+              <TodayMovie key={movie.movieCd}>
+                <MoviePoster
+                  onClick={() => handleClick(movie.movieCd)}
+                  src={movie.posterUrl}
+                  alt={movie.movieNm}
+                />
+                <MovieTitle>{movie.movieNm}</MovieTitle>
+              </TodayMovie>
+            ))}
+          </Movies>
           <TodayMovietxt>Latest Movie</TodayMovietxt>
           <Movies>
             {latestMovie.map((movie) => (
