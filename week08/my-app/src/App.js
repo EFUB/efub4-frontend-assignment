@@ -3,6 +3,7 @@ import "./App.css";
 import requests from "./requests";
 import Row from "./Row";
 import Banner from "./Banner";
+import axios from "axios";
 
 function App() {
   return (
