@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff2)
+      format("woff2"),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff)
+      format("woff"),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.otf)
+      format("opentype");
+}
+
+html,
+body {
+  font-family: Noto Sans KR;
+  width: 100%;
+  min-width: 100%;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: Noto Sans KR;
+  cursor: pointer;
+  border: 0;
+}
+
+:root {
+  /* color */
+  --background: #09090a;
+  --maingrey: #141517;
+  --subgrey: #84868d;
+  --font: #fff;
+  --main: #f6285c;
+  --beforeShadow: linear-gradient(
+    90deg,
+    #000 5%,
+    rgba(0, 0, 0, 0.7) 30%,
+    rgba(0, 0, 0, 0.45) 50%,
+    rgba(0, 0, 0, 0.2) 80%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  --afterShadow: linear-gradient(
+    0deg,
+    #000 14%,
+    rgba(0, 0, 0, 0.9) 32%,
+    rgba(0, 0, 0, 0.8) 45%,
+    rgba(0, 0, 0, 0.45) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
