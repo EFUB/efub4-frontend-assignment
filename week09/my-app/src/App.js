@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, createContext } from "react";
 import "./App.css";
 import requests from "./requests";
 import Row from "./Row";
 import Banner from "./Banner";
-import axios from "axios";
+
+export const ThemeContext = createContext();
 
 const rowList = [
   {
@@ -21,18 +22,26 @@ const rowList = [
 ];
 
 function App() {
+  const [theme, setTheme] = useState("dark");
+
+  const toggleTheme = () => {
+    setTheme((cur) => (cur === "dark" ? "light" : "dark"));
+  };
+
   return (
-    <div className="app">
-      <Banner />
-      {rowList.map((item) => (
-        <Row
-          key={item.title}
-          title={item.title}
-          fetchUrl={requests[item.fetchUrl]}
-          isLargeRow={!!item.isLargeRow}
-        />
-      ))}
-    </div>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div className="app" id={theme}>
+        <Banner />
+        {rowList.map((item) => (
+          <Row
+            key={item.title}
+            title={item.title}
+            fetchUrl={requests[item.fetchUrl]}
+            isLargeRow={!!item.isLargeRow}
+          />
+        ))}
+      </div>
+    </ThemeContext.Provider>
   );
 }
 

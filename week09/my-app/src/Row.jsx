@@ -7,7 +7,11 @@ const RowContainer = styled.div`
   margin-left: 20px;
   color: white;
 `;
-const RowTitle = styled.h2``;
+const RowTitle = styled.h2`
+  #light & {
+    color: black;
+  }
+`;
 const RowPosters = styled.div`
   display: flex;
   overflow-x: scroll;

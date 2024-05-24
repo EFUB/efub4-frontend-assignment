@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import requests from "./requests";
 import styled from "styled-components";
+import ReactSwitch from "react-switch";
+import { ThemeContext } from "./App";
 
 const BannerContents = styled.div`
   margin-left: 30px;
   padding-top: 140px;
   height: 300px;
+  position: relative;
 `;
 
 const BannerTitle = styled.h1`
@@ -55,9 +58,33 @@ const BannerFadeBottom = styled.div`
     rgba(37, 37, 37, 0.61),
     #111
   );
+  #light & {
+    background-image: linear-gradient(
+      180deg,
+      transparent,
+      rgba(234, 234, 234, 0.61),
+      #ffffff
+    );
+  }
 `;
+
+const Switch = styled.div`
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 30px;
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  & > label {
+    margin-right: 10px;
+  }
+`;
+
 function Banner() {
   const [movie, setMovie] = useState(null);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     async function fetchData() {
@@ -78,6 +105,7 @@ function Banner() {
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
+
   return (
     <header
       className="banner"
@@ -87,14 +115,19 @@ function Banner() {
         backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
         backgroundPosition: "center center",
       }}
+      id={theme === "light" ? "light" : ""}
     >
       <BannerContents>
+        <Switch>
+          <label>{theme === "light" ? "Light Mode" : "Dark Mode"}</label>
+          <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
+        </Switch>
         <BannerTitle>
           {movie?.title || movie?.name || movie?.original_name}
         </BannerTitle>
         <BannerButtons>
           <BannerButton>Play</BannerButton>
-          <BannerButton>My list</BannerButton>
+          <BannerButton>My List</BannerButton>
         </BannerButtons>
         <BannerDescription>{truncate(movie?.overview, 150)}</BannerDescription>
       </BannerContents>

@@ -7,3 +7,11 @@
 .app {
   background-color: #111;
 }
+
+#light {
+  background-color: rgb(255, 255, 255);
+}
+
+#dark {
+  background-color: black;
+}
