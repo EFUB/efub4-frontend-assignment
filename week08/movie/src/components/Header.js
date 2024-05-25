@@ -1,11 +1,14 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
+import { useSelector } from "react-redux";
 
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0px 5px;
-  background-color: #222222;
+  background-color: ${(props) =>
+    props.theme.mode === "dark" ? "#ffffff" : "#222222"};
+
   position: fixed; /* Header를 항상 화면 위에 고정 */
   top: 0; /* 상단에 고정 */
   left: 0; /* 좌측에 고정 */
@@ -53,17 +56,43 @@ const SignBtn = styled.button`
   font-size: 14px;
   margin-left: 0px;
 `;
-const Header = () => {
+
+const ThemeBtn = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: yellow;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 40px;
+  padding-right: 10px;
+  &:before {
+    content: "${(props) => (props.theme.mode === "dark" ? "✨" : "🌙")}";
+    font-size: 20px;
+  }
+`;
+
+const Header = ({ onThemeChange }) => {
+  const theme = useSelector((state) => state.themeSlicer.theme);
+
   return (
-    <HeaderContainer>
-      <HeaderLeft>
-        <Logo>JIN's THEATRE</Logo>
-      </HeaderLeft>
-      <HeaderRight>
-        <HeaderRightText>로그인</HeaderRightText>
-        <SignBtn>회원가입</SignBtn>
-      </HeaderRight>
-    </HeaderContainer>
+    <ThemeProvider theme={theme}>
+      <HeaderContainer>
+        <HeaderLeft>
+          <Logo>JIN's THEATRE</Logo>
+        </HeaderLeft>
+        <HeaderRight>
+          <ThemeBtn onClick={onThemeChange} />
+
+          <HeaderRightText>로그인</HeaderRightText>
+          <SignBtn>회원가입</SignBtn>
+        </HeaderRight>
+      </HeaderContainer>
+    </ThemeProvider>
   );
 };
 
