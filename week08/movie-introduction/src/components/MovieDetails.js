@@ -12,8 +12,8 @@ const MovieDetailBack = styled.div`
   color: ${(props) => props.fontColor};
   background-color: ${(props) => props.bgColor};
 
-  width: 80vw;
-  height: 90vh;
+  width: 100vw;
+  height: 100vh;
 `;
 
 const PosterAndInfo = styled.div`
