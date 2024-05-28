@@ -12,26 +12,11 @@
   font-weight: 700;
   font-style: normal;
 }
-.main {
-  color: white;
-}
 body {
-  background: rgb(17, 17, 17);
-  background: linear-gradient(
-    0deg,
-    rgba(17, 17, 17, 1) 0%,
-    rgba(34, 34, 34, 1) 45%,
-    rgba(84, 84, 84, 1) 100%
-  );
   color: white;
   font-family: "TTLaundryGothicB";
 }
-/* .movieList {
-    padding: 0 0.5em;
-    max-width: 360px;
-    height: 150px;
-    overflow: auto;
-} */
+
 .movieList::-webkit-scrollbar {
   display: none;
 }
