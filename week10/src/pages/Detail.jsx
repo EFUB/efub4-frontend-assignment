@@ -8,26 +8,26 @@ import {
     checkMyClick,
 } from "../api/heart";
 import { deleteComments, getComments, postComments } from "../api/comment";
+import { JWTtest } from "../api/user";
 
 const Detail = () => {
     const { postId } = useParams();
     const [details, setDetails] = useState(null);
-    const [isMyPost, setIsMyPost] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
     const [post, setPost] = useState({ title: "", content: "" });
     const [heartNum, setHeartNum] = useState(0);
     const [myHeart, setMyheart] = useState(false);
     const [myComments, setMyComments] = useState("");
     const [commentsList, setCommentsList] = useState(null);
+    const [myAccount, setMyAccount] = useState("");
     const nav = useNavigate();
 
     useEffect(() => {
         async function getDetails() {
             const res = await GetPostDetailApi(postId);
             setDetails(res);
-            if (res.nickname === "abc") {
-                setIsMyPost(true);
-            }
+            const res2 = await JWTtest();
+            setMyAccount(res2.nickname);
         }
 
         async function getHeartNumInDetail() {
@@ -116,7 +116,7 @@ const Detail = () => {
 
     return (
         <>
-            {isMyPost ? (
+            {myAccount == details.nickname ? (
                 isEdit ? (
                     <button onClick={onSubmitEditPost}>수정완료</button>
                 ) : (
@@ -158,13 +158,15 @@ const Detail = () => {
                               <div>
                                   <div>{e.commentAuthorNickname}</div>
                                   <div>{e.content}</div>
-                                  <button
-                                      onClick={() =>
-                                          onClickDeleteComments(e.commentId)
-                                      }
-                                  >
-                                      댓글 삭제
-                                  </button>
+                                  {myAccount == e.commentAuthorNickname ? (
+                                      <button
+                                          onClick={() =>
+                                              onClickDeleteComments(e.commentId)
+                                          }
+                                      >
+                                          댓글 삭제
+                                      </button>
+                                  ) : null}
                               </div>
                           ))
                         : "loading..."}
