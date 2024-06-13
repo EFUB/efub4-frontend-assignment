@@ -9,7 +9,7 @@ const List = () => {
     useEffect(() => {
         async function getPosts() {
             const res = await GetAllPostApi();
-            setPosts(res);
+            setPosts(res.reverse());
         }
 
         getPosts();

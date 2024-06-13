@@ -39,7 +39,9 @@ const Write = () => {
             };
 
             CreateNewPostApi(request, file);
+
             nav("/");
+            window.location.reload();
         }
     };
 
