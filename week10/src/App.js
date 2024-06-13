@@ -11,10 +11,10 @@ function App() {
     return (
         <div>
             <Navbar>
-                <NavLink to="/">글 목록</NavLink>
-                <NavLink to="/write">글쓰기</NavLink>
-                <NavLink to="/register">로그인/회원가입</NavLink>
-                <NavLink to="/heart">좋아요 누른 글</NavLink>
+                <NavContent to="/">글 목록</NavContent>
+                <NavContent to="/write">글쓰기</NavContent>
+                <NavContent to="/register">로그인/회원가입</NavContent>
+                <NavContent to="/heart">좋아요 누른 글</NavContent>
             </Navbar>
             <Routes>
                 <Route path="/" element={<ListPage />} />
@@ -27,4 +27,17 @@ function App() {
     );
 }
 export default App;
-const Navbar = styled.div``;
+const Navbar = styled.div`
+    background-color: #38ef7d;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    height: 40px;
+`;
+
+const NavContent = styled(NavLink)`
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+`;

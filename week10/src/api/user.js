@@ -37,7 +37,6 @@ export const postLogin = async (username, password) => {
 export const JWTtest = async () => {
     try {
         const res = await client.get("users/test");
-        console.log(res.data);
         return res.data;
     } catch (err) {
         console.log(err);

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postRegister, postLogin } from "../api/user";
+import styled from "styled-components";
 
 const Register = () => {
     // 회원가입 API
@@ -49,10 +50,10 @@ const Register = () => {
     };
 
     return (
-        <>
-            <h1>로그인/회원가입 페이지</h1>
+        <Container>
+            <h1>로그인/회원가입</h1>
             <h2>회원가입</h2>
-            <form onSubmit={Signup}>
+            <SignupForm onSubmit={Signup}>
                 아이디
                 <input
                     type="text"
@@ -74,34 +75,53 @@ const Register = () => {
                     name="nickname"
                     onChange={onChangeSignup}
                 />
-                <button type="submit">회원가입</button>
-            </form>
+                <Button type="submit">회원가입</Button>
+            </SignupForm>
             <h2>로그인</h2>
             {localStorage.getItem("efubtoken") ? (
-                <button onClick={Logout}>로그아웃</button>
+                <Button onClick={Logout}>로그아웃</Button>
             ) : (
-                <div>
-                    <form onSubmit={Login}>
-                        아이디
-                        <input
-                            type="text"
-                            value={login.id}
-                            name="id"
-                            onChange={onChangesLogin}
-                        />
-                        비밀번호
-                        <input
-                            type="password"
-                            value={login.pw}
-                            name="pw"
-                            onChange={onChangesLogin}
-                        />
-                        <button type="submit">로그인</button>
-                    </form>
-                </div>
+                <LoginForm onSubmit={Login}>
+                    아이디
+                    <input
+                        type="text"
+                        value={login.id}
+                        name="id"
+                        onChange={onChangesLogin}
+                    />
+                    비밀번호
+                    <input
+                        type="password"
+                        value={login.pw}
+                        name="pw"
+                        onChange={onChangesLogin}
+                    />
+                    <Button type="submit">로그인</Button>
+                </LoginForm>
             )}
-        </>
+        </Container>
     );
 };
+
+const Container = styled.div`
+    padding: 0 15px;
+`;
+
+const Button = styled.button`
+    width: 80px;
+    font-family: "Pretendard-Regular";
+`;
+
+const SignupForm = styled.form`
+    & > * {
+        margin: 0 15px 0 5px;
+    }
+`;
+
+const LoginForm = styled.form`
+    & > * {
+        margin: 0 15px 0 5px;
+    }
+`;
 
 export default Register;
