@@ -30,6 +30,7 @@ const Detail = () => {
             const res = await GetPostDetailApi(postId);
             setDetails(res);
             const res2 = await JWTtest();
+
             setMyAccount(res2.nickname);
         }
 
@@ -48,10 +49,15 @@ const Detail = () => {
             setMyheart(HeartHistory);
         }
 
-        getDetails();
-        getHeartNumInDetail();
-        getCommentsList();
-        didIClickHeart();
+        if (!localStorage.getItem("efubtoken")) {
+            alert("로그인 후 이용해주세요.");
+            nav("/register");
+        } else {
+            getDetails();
+            getHeartNumInDetail();
+            getCommentsList();
+            didIClickHeart();
+        }
     }, [postId]);
 
     useEffect(() => {
