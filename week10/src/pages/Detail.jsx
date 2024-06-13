@@ -137,7 +137,7 @@ const Detail = () => {
         <>
             {isEdit ? (
                 <EditContainer>
-                    <h2>게시글 수정</h2>
+                    <h1>게시글 수정</h1>
                     <EditTitle
                         type="text"
                         value={post.title}
@@ -353,7 +353,7 @@ const Buttons = styled.div`
 const EditContainer = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 0 10px;
+    padding: 0 15px;
 `;
 
 const EditTitle = styled.input`

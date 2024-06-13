@@ -11,7 +11,7 @@ const Heart = () => {
     useEffect(() => {
         async function getPosts() {
             const res = await getMyHeartPost();
-            setPosts(res);
+            setPosts(res.reverse());
         }
 
         if (!localStorage.getItem("efubtoken")) {

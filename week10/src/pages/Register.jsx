@@ -60,6 +60,7 @@ const Register = () => {
                     value={signup.id}
                     name="id"
                     onChange={onChangeSignup}
+                    required
                 />
                 비밀번호
                 <input
@@ -67,6 +68,7 @@ const Register = () => {
                     value={signup.pw}
                     name="pw"
                     onChange={onChangeSignup}
+                    required
                 />
                 닉네임
                 <input
@@ -74,6 +76,7 @@ const Register = () => {
                     value={signup.nickname}
                     name="nickname"
                     onChange={onChangeSignup}
+                    required
                 />
                 <Button type="submit">회원가입</Button>
             </SignupForm>
@@ -88,6 +91,7 @@ const Register = () => {
                         value={login.id}
                         name="id"
                         onChange={onChangesLogin}
+                        required
                     />
                     비밀번호
                     <input
@@ -95,6 +99,7 @@ const Register = () => {
                         value={login.pw}
                         name="pw"
                         onChange={onChangesLogin}
+                        required
                     />
                     <Button type="submit">로그인</Button>
                 </LoginForm>

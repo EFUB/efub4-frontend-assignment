@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# EFUB 10주차 과제
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## 글 목록 페이지
 
-In the project directory, you can run:
+-   게시물 최신 순 정렬
+-   게시물 이미지, 제목, 닉네임 표시
+-   클릭 시 상세 페이지로 이동
+-   로그인 없이 접근 가능
 
-### `npm start`
+## 글쓰기 페이지
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-   제목, 내용 작성 및 이미지 첨부 가능
+-   공란인 항목이 있다면 alert 발생
+-   작성 완료 시 글 목록 페이지로 이동
+-   로그인 없이 접근 시 로그인 페이지로 이동
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 로그인/회원가입 페이지
 
-### `npm test`
+-   아이디, 비밀번호, 닉네임 입력 후 회원가입 가능
+-   공란이 있을 시 회원가입 불가
+-   아이디, 비밀번호 입력 후 로그인 가능
+-   아이디와 비밀번호가 일치하지 않다면 로그인 불가
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 좋아요 누른 글 페이지
 
-### `npm run build`
+-   게시물 상세 페이지에서 하트를 누른 글의 게시물 최신순 정렬
+-   게시물 이미지, 제목, 닉네임 표시
+-   클릭 시 상세 페이지로 이동
+-   로그인 없이 접근 시 로그인 페이지로 이동
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 게시물 상세 페이지
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   제목, 닉네임, 작성 시간, 이미지, 작성글 표시
+-   하트 버튼에 좋아요 개수 표시
+-   하트 버튼을 클릭해 좋아요 선택/취소 가능
+-   게시글 하단에 댓글 작성자 및 내용 표시
+-   댓글창 하단에서 댓글 작성 가능
+-   본인이 작성한 게시물은 수정 및 삭제, 댓글은 삭제 가능
