@@ -1,7 +1,7 @@
 import client from ".";
 
 // 회원가입
-export const postRegister = async (username, password,nickname) => {
+export const postRegister = async (username, password, nickname) => {
     try {
         const res = await client.post("/users/register", {
             username,
