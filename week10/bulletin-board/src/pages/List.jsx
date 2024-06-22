@@ -43,6 +43,8 @@ function ListPage() {
     padding-right: 3vw;
     padding-top: 2vh;
     padding-bottom: 1vh;
+    border-bottom: solid 2px #97a857;
+    margin-right: 2vw;
   `;
   const ListTitle = styled.div`
     margin-left: 5vw;
@@ -60,6 +62,8 @@ function ListPage() {
   const StyledLink = styled(Link)`
     text-decoration: none;
     color: black;
+
+    width: 80vw;
   `;
 
   return (

@@ -88,12 +88,12 @@ function WritePage() {
         type="file"
         accept="image/*"
         onChange={onUploadImage}
-        style={{ margin: "3vh" }}
+        style={{ marginLeft: "3vw", marginBottom: "2vh" }}
       />
       <button
         label="글 작성 업로드"
         onClick={onUploadImageButtonClick}
-        style={{ margin: "3vh", width: "6vw" }}
+        style={{ marginLeft: "3vw", width: "6vw" }}
       >
         업로드
       </button>

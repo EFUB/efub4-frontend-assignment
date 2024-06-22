@@ -7,11 +7,11 @@ import { isLoggedIn } from "../api/user";
 const PostContainer = styled.div`
   margin-bottom: 2vh;
   list-style-type: none;
-  padding-left: 3vw;
-  padding-right: 3vw;
+  margin-left: 3vw;
+  margin-right: 3vw;
   padding-top: 2vh;
   padding-bottom: 1vh;
-  border: 1px solid #ced4da;
+  border-bottom: solid 2px #97a857;
 `;
 
 const PostTitle = styled.div`
