@@ -1,4 +1,5 @@
 import client from ".";
+import axios from "axios";
 
 export const CreateNewPostApi = async (request, image) => {
   try {
@@ -13,24 +14,39 @@ export const CreateNewPostApi = async (request, image) => {
         "Content-Type": "multipart/form-data",
       },
     });
-    console.log(res);
+    // console.log(res);
   } catch (err) {
     console.log(err);
   }
 };
 
-export const GetPostApi = async () => {
+export const GetPostsApi = async () => {
   try {
-    const res = await client.get("/posts", {
-      postId,
-      nickname,
-      title,
-      content,
-      image,
-      createDate,
-      modifiedDate,
-    });
-    console.log(res);
+    const res = await client.get("/posts");
+    // console.log(res.data);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const DeletePostApi = async (postId) => {
+  try {
+    await client.delete(`${process.env.REACT_APP_SERVER_URL}/posts/${postId}`);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const GetPostDetailApi = async (postId) => {
+  try {
+    if (postId) {
+      const res = await client.get(
+        `${process.env.REACT_APP_SERVER_URL}/posts/${postId}`
+      );
+      // console.log(res.data);
+      return res.data;
+    }
   } catch (err) {
     console.log(err);
   }
