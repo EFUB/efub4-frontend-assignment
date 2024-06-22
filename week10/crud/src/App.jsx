@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, NavLink, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import RegisterPage from './pages/Register';
 import WritePage from './pages/Write';
@@ -8,21 +8,60 @@ import DetailPage from './pages/Detail';
 import HeartPage from './pages/Heart';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // 로그인 여부 확인
+    const token = localStorage.getItem('efubtoken');
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    // 로그아웃 처리
+    localStorage.removeItem('efubtoken');
+    setIsLoggedIn(false);
+    alert("로그아웃 되었습니다.")
+    // 로그아웃 후 회원가입 페이지로
+    navigate('/register');
+  };
+
+  const renderRoutes = () => {
+    if (isLoggedIn) {
+      return (
+        <Routes>
+          <Route path="/" element={<ListPage />} />
+          <Route path="/detail/:postId" element={<DetailPage />} />
+          <Route path="/write" element={<WritePage />} />
+          <Route path="/heart" element={<HeartPage />} />
+          <Route path="*" element={<NoMatch />} />
+        </Routes>
+      );
+    } else {
+      return (
+        <Routes>
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="*" element={<navigate to="/register" />} />
+        </Routes>
+      );
+    }
+  };
+
   return (
     <Container>
       <Navbar>
-        <StyledLink to="/">글 목록</StyledLink>
-        <StyledLink to="/write">글쓰기</StyledLink>
-        <StyledLink to="/register">로그인/회원가입</StyledLink>
-        <StyledLink to="/heart">좋아요 누른 글</StyledLink>
+        <StyledLink to="/" activeClassName="active">글 목록</StyledLink>
+        {isLoggedIn && <StyledLink to="/write" activeClassName="active">글쓰기</StyledLink>}
+        <StyledLink to="/register" activeClassName="active" onClick={handleLogout}>
+          {isLoggedIn ? '로그아웃' : '로그인/회원가입'}
+        </StyledLink>
+        {isLoggedIn && <StyledLink to="/heart" activeClassName="active">좋아요 누른 글</StyledLink>}
       </Navbar>
-      <Routes>
-        <Route path="/" element={<ListPage />} />
-        <Route path="/detail/:postId" element={<DetailPage />} />
-        <Route path="/write" element={<WritePage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/heart" element={<HeartPage />} />
-      </Routes>
+      {renderRoutes()}
     </Container>
   );
 }
@@ -43,7 +82,7 @@ const Navbar = styled.nav`
 
 const StyledLink = styled(NavLink)`
   text-decoration: none;
-  color: #333;
+  color: #333333;
   font-size: 16px;
   font-weight: bold;
   padding: 10px 20px;
@@ -60,3 +99,7 @@ const StyledLink = styled(NavLink)`
     color: white;
   }
 `;
+
+const NoMatch = () => {
+  return <h1>페이지를 찾을 수 없습니다.</h1>;
+};

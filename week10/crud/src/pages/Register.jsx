@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { postRegister, postLogin } from '../api/user';
 import styled from 'styled-components';
+import client from '../api';
 
 function RegisterPage() {
     const navigate = useNavigate();
 
-    // 회원가입
+    // 회원가입 상태 관리
     const [signup, setSignup] = useState({ id: "", pw: "", nickname: "" });
 
     const onChangeSignup = (e) => {
@@ -14,7 +15,7 @@ function RegisterPage() {
         setSignup({ ...signup, [name]: value });
     };
 
-    const Signup = async (e) => {
+    const handleSignup = async (e) => {
         e.preventDefault();
         const { id, pw, nickname } = signup;
         const res = await postRegister(id, pw, nickname);
@@ -26,7 +27,7 @@ function RegisterPage() {
         }
     };
 
-    // 로그인
+    // 로그인 상태 관리
     const [login, setLogin] = useState({ id: "", pw: "" });
 
     const onChangeLogin = (e) => {
@@ -34,12 +35,14 @@ function RegisterPage() {
         setLogin({ ...login, [name]: value });
     };
 
-    const Login = async (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
         const { id, pw } = login;
         const res = await postLogin(id, pw);
         if (res.status === 201) {
             alert(`로그인 성공! ${res.data.username}님 환영합니다.`);
+            localStorage.setItem("efubtoken", res.data.token);
+            client.defaults.headers.common["Authorization"] = res.data.token; 
             navigate("/");
             window.location.reload();
         } else if (res.response.status === 400) {
@@ -47,12 +50,19 @@ function RegisterPage() {
         }
     };
 
+    // 로그아웃 처리
+    const handleLogout = () => {
+        localStorage.removeItem("efubtoken");
+        delete client.defaults.headers.common["Authorization"];
+        navigate("/register"); // 로그인 페이지로 이동
+    };
+
     return (
         <Container>
             <h1>로그인/회원가입 페이지</h1>
             <Section>
                 <h2>회원가입</h2>
-                <Form onSubmit={Signup}>
+                <Form onSubmit={handleSignup}>
                     <Label>아이디</Label>
                     <Input
                         type="text"
@@ -79,7 +89,7 @@ function RegisterPage() {
             </Section>
             <Section>
                 <h2>로그인</h2>
-                <Form onSubmit={Login}>
+                <Form onSubmit={handleLogin}>
                     <Label>아이디</Label>
                     <Input
                         type="text"
@@ -97,6 +107,7 @@ function RegisterPage() {
                     <Button type='submit'>로그인</Button>
                 </Form>
             </Section>
+            <LogoutButton onClick={handleLogout}>로그아웃</LogoutButton>
         </Container>
     );
 }
@@ -127,7 +138,7 @@ const Input = styled.input`
     margin-bottom: 10px;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #cccccc;
+    border: 1px solid #ccc;
     border-radius: 5px;
 `;
 
@@ -142,5 +153,19 @@ const Button = styled.button`
 
     &:hover {
         background-color: #d32f2f;
+    }
+`;
+
+const LogoutButton = styled.button`
+    padding: 10px 20px;
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #bbb;
     }
 `;
