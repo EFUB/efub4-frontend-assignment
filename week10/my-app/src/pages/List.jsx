@@ -7,10 +7,6 @@ const PostListItemContainer = styled.div`
   gap: 1em;
   padding: 20px;
 `;
-const formatDate = (datetime) => {
-  const date = new Date(datetime);
-  return date.toLocaleDateString();
-};
 
 const PostListItem = styled.div`
   border: 1px solid #ccc;
@@ -24,9 +20,10 @@ const PostListItem = styled.div`
 `;
 
 const PostImage = styled.img`
-  max-width: 00px;
+  max-width: 100%;
   height: auto;
   border-radius: 5px;
+  margin: 0.5em 0;
 `;
 
 const PostTitle = styled.p`
@@ -51,6 +48,11 @@ const PostDate = styled.p`
   margin: 0.5em 0;
 `;
 
+const formatDate = (datetime) => {
+  const date = new Date(datetime);
+  return date.toLocaleDateString();
+};
+
 const ListPage = ({ posts, setPosts }) => {
   const navigate = useNavigate();
 
@@ -66,7 +68,18 @@ const ListPage = ({ posts, setPosts }) => {
           <PostTitle>제목: {post.title}</PostTitle>
           <PostNickname>닉네임: {post.nickname}</PostNickname>
           <PostContent>내용: {post.content}</PostContent>
-          {post.image && <PostImage src={post.image} alt={post.title} />}
+          {post.image ? (
+            <PostImage
+              src={post.image}
+              alt={post.title}
+              onError={(e) => {
+                e.target.src = "https://via.placeholder.com/150";
+                e.target.alt = "Image not available";
+              }}
+            />
+          ) : (
+            <p>이미지가 없습니다.</p>
+          )}
           <PostDate>{formatDate(post.createdDate)}</PostDate>
         </PostListItem>
       ))}
